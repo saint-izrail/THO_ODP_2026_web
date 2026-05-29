@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BSI Tabungan Haji - Login</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffddb7",
+                      "background": "#f8f9f9",
+                      "surface-container-low": "#f3f4f4",
+                      "error": "#ba1a1a",
+                      "surface-container": "#edeeee",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#026a66",
+                      "secondary": "#78582f",
+                      "inverse-primary": "#84d4cf",
+                      "secondary-fixed-dim": "#eabf8d",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-surface": "#191c1c",
+                      "on-primary-container": "#95e5e0",
+                      "tertiary": "#6f361b",
+                      "on-error": "#ffffff",
+                      "surface": "#f8f9f9",
+                      "on-tertiary-fixed-variant": "#70371c",
+                      "on-secondary-fixed": "#2a1700",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#191c1c",
+                      "surface-container-high": "#e7e8e8",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e1e3e3",
+                      "on-surface-variant": "#3e4948",
+                      "primary-fixed": "#a0f1eb",
+                      "on-secondary-container": "#795930",
+                      "secondary-container": "#fed39f",
+                      "primary-fixed-dim": "#84d4cf",
+                      "surface-variant": "#e1e3e3",
+                      "on-primary-fixed-variant": "#00504d",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#00201e",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f8f9f9",
+                      "outline-variant": "#bec9c7",
+                      "surface-dim": "#d9dada",
+                      "primary": "#004f4c",
+                      "inverse-on-surface": "#f0f1f1",
+                      "tertiary-fixed": "#ffdbcd",
+                      "outline": "#6e7978",
+                      "on-tertiary-container": "#ffcdb8",
+                      "tertiary-container": "#8c4d30",
+                      "inverse-surface": "#2e3131",
+                      "on-secondary-fixed-variant": "#5e411a",
+                      "primary-container": "#006965"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "2xl": "1rem",
+                      "3xl": "1.5rem",
+                      "4xl": "2rem"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "container-max-width": "1280px"
+              },
+              "fontFamily": {
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom input focus transition for bottom border */
+        .input-underline {
+            position: relative;
+        }
+        .input-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #78582f; /* secondary color */
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .input-underline:focus-within::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Ambient Background Texture -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-[0.03]" data-alt="A highly sophisticated, subtle, seamless Islamic geometric pattern background. The pattern consists of intricate, intersecting 8-point stars and polygons rendered in incredibly faint, almost invisible lines against a pristine white background. The overall effect is incredibly premium, minimal, and serene, evoking a high-end architectural motif suitable for a modern Islamic fintech application. The lighting is perfectly even and soft." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBh4IAoHzQqXPe-QvJJLQmThubQE997h2AfC_nmq6fbAbAzLfbHctL_4ZtM039fwIGHZHuM1QexmowujseVHJ2ck6ryqRDfAF8p-QhjLV6csHVKpS1GQh9df-fNcprY1F7e07_n1jrs_N0CPoG3hqXtW6RjWQj4TB_lzkoWyTNrFTPk_UwLKuEbsk2SqWrAShrwnSj5z5w3b0-76IdDupMwa3M_lJSXQcp5EPTnatGZ2NMEM3gJRmjKpITVTu9kkxUJahQ09pEweXI');">
+</div>
+<!-- Ambient Gradients -->
+<div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[100px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary/5 blur-[120px]"></div>
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 flex-grow flex flex-col items-center justify-center p-4 md:p-8 w-full max-w-container-max-width mx-auto">
+<!-- Glassmorphism Login Card -->
+<div class="w-full max-w-[480px] bg-surface-container-lowest/80 backdrop-blur-2xl border border-white/60 rounded-[2rem] shadow-[0_8px_32px_-8px_rgba(0,79,76,0.08)] p-8 md:p-12 transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,79,76,0.12)]">
+<!-- Header Section -->
+<div class="flex flex-col items-center mb-10">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 border border-primary/10">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="mosque" data-weight="fill">mosque</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight mb-2 text-center">BSI Tabungan Haji</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">The Digital Sanctuary for your spiritual journey</p>
+</div>
+<!-- Login Form -->
+<form class="flex flex-col gap-6" onsubmit="event.preventDefault();">
+<!-- Email Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface ml-1" for="email">Email</label>
+<div class="relative flex items-center input-underline group rounded-t-xl bg-surface-container-low/50 overflow-hidden">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors" data-icon="mail">mail</span>
+<input class="w-full bg-transparent border-none pl-12 pr-4 py-4 font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus:ring-0 focus:outline-none" id="email" placeholder="Masukkan alamat email" required="" type="email"/>
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-outline-variant/30"></div>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end ml-1">
+<label class="font-label-md text-label-md text-on-surface" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-secondary hover:text-secondary-fixed-dim transition-colors" href="#">Lupa Password?</a>
+</div>
+<div class="relative flex items-center input-underline group rounded-t-xl bg-surface-container-low/50 overflow-hidden">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors" data-icon="lock">lock</span>
+<input class="w-full bg-transparent border-none pl-12 pr-12 py-4 font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus:ring-0 focus:outline-none" id="password" placeholder="Masukkan password" required="" type="password"/>
+<button class="absolute right-4 text-outline hover:text-on-surface transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility_off" id="visibility-icon">visibility_off</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-outline-variant/30"></div>
+</div>
+</div>
+<!-- Submit Action -->
+<div class="mt-4 flex flex-col gap-4">
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md py-4 px-6 rounded-xl transition-all duration-300 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2 active:scale-[0.98]" type="submit">
+                        Masuk
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="text-center mt-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Belum memiliki akun?</span>
+<a class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors ml-1" href="#">Daftar Akun</a>
+</div>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer System Status -->
+<footer class="relative z-10 w-full py-6 flex justify-center items-center">
+<div class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-lowest/50 border border-outline-variant/20 backdrop-blur-sm">
+<div class="w-2 h-2 rounded-full bg-[#10b981] shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">API Terhubung</span>
+</div>
+</footer>
+<!-- Interactive Script -->
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const visibilityIcon = document.getElementById('visibility-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                visibilityIcon.textContent = 'visibility';
+                visibilityIcon.setAttribute('data-icon', 'visibility');
+            } else {
+                passwordInput.type = 'password';
+                visibilityIcon.textContent = 'visibility_off';
+                visibilityIcon.setAttribute('data-icon', 'visibility_off');
+            }
+        }
+    </script>
+</body></html>

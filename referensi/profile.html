@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BSI Tabungan Haji - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffddb7",
+                      "background": "#f8f9f9",
+                      "surface-container-low": "#f3f4f4",
+                      "error": "#ba1a1a",
+                      "surface-container": "#edeeee",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#026a66",
+                      "secondary": "#78582f",
+                      "inverse-primary": "#84d4cf",
+                      "secondary-fixed-dim": "#eabf8d",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-surface": "#191c1c",
+                      "on-primary-container": "#95e5e0",
+                      "tertiary": "#6f361b",
+                      "on-error": "#ffffff",
+                      "surface": "#f8f9f9",
+                      "on-tertiary-fixed-variant": "#70371c",
+                      "on-secondary-fixed": "#2a1700",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#191c1c",
+                      "surface-container-high": "#e7e8e8",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e1e3e3",
+                      "on-surface-variant": "#3e4948",
+                      "primary-fixed": "#a0f1eb",
+                      "on-secondary-container": "#795930",
+                      "secondary-container": "#fed39f",
+                      "primary-fixed-dim": "#84d4cf",
+                      "surface-variant": "#e1e3e3",
+                      "on-primary-fixed-variant": "#00504d",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#00201e",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f8f9f9",
+                      "outline-variant": "#bec9c7",
+                      "surface-dim": "#d9dada",
+                      "primary": "#004f4c",
+                      "inverse-on-surface": "#f0f1f1",
+                      "tertiary-fixed": "#ffdbcd",
+                      "outline": "#6e7978",
+                      "on-tertiary-container": "#ffcdb8",
+                      "tertiary-container": "#8c4d30",
+                      "inverse-surface": "#2e3131",
+                      "on-secondary-fixed-variant": "#5e411a",
+                      "primary-container": "#006965"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "container-max-width": "1280px"
+              },
+              "fontFamily": {
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "display-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Base Glassmorphism classes for reuse */
+        .glass-panel {
+            @apply bg-surface-container-lowest/70 backdrop-blur-xl border border-white/40 shadow-sm shadow-primary/5 rounded-xl;
+        }
+        /* Hide scrollbar for neatness */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-primary/20">
+<div class="flex min-h-screen w-full relative">
+<!-- ========================================== -->
+<!-- SHARED COMPONENT: SideNavBar (Desktop Only)-->
+<!-- ========================================== -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest/70 backdrop-blur-2xl border-r border-white/40 shadow-xl shadow-primary/5 z-40 p-6 gap-8">
+<!-- Header -->
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mosque</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Haji Portal</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Digital Sanctuary</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Inactive -->
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl hover:bg-primary/10 transition-all duration-300 scale-95 active:scale-90 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl hover:bg-primary/10 transition-all duration-300 scale-95 active:scale-90 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                    Tabungan
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl hover:bg-primary/10 transition-all duration-300 scale-95 active:scale-90 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+                    Mutasi
+                </a>
+<!-- ACTIVE TAB: Profil -->
+<a class="flex items-center gap-3 bg-primary text-on-primary rounded-xl px-4 py-3 shadow-md shadow-primary/20 transition-all duration-300 scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+                    Profil
+                </a>
+</nav>
+<!-- Bottom Actions -->
+<div class="flex flex-col gap-2 mt-auto">
+<button class="w-full bg-primary-container text-on-primary rounded-xl py-3 font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity mb-4">
+                    Buka Rekening Baru
+                </button>
+<div class="h-px w-full bg-outline-variant/30 mb-4"></div>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-primary/5 rounded-xl hover:text-primary transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+                    Support
+                </a>
+<a class="flex items-center gap-3 text-error px-4 py-2 hover:bg-error-container rounded-xl transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</div>
+</aside>
+<!-- ========================================== -->
+<!-- MAIN CONTENT AREA Wrapper                  -->
+<!-- ========================================== -->
+<div class="flex-1 md:ml-64 flex flex-col min-h-screen relative w-full">
+<!-- ========================================== -->
+<!-- SHARED COMPONENT: TopNavBar                -->
+<!-- ========================================== -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-xl border-b border-white/40 shadow-sm shadow-primary/5">
+<!-- Left: Brand (Mobile Only fallback, or hidden if pure strict SideNav reliance, but keeping for safety) -->
+<div class="flex items-center gap-4 md:hidden">
+<button class="text-primary hover:text-primary-container transition-colors p-2 rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">BSI Tabungan Haji</span>
+</div>
+<div class="hidden md:block">
+<!-- Spacer for desktop to push actions right -->
+<span class="font-headline-md text-headline-md font-bold text-primary opacity-0">BSI Tabungan Haji</span>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-2 md:gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-variant cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-variant cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-variant cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/30 mx-2 hidden md:block"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container overflow-hidden cursor-pointer active:opacity-70 transition-all shadow-sm">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A close-up, high-quality portrait of a distinguished individual in modern, modest business attire, suitable for a premium Islamic fintech application. The lighting is soft and professional, set against a bright, airy, and minimal light-mode background. The mood conveys trust, serenity, and financial reliability. Deep turquoise and crisp white ambient tones subtly reflect the high-end corporate styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI1AGUxtSWpeJ8PpUFTgKoQWyZV5QkBAgMZvMP6kTrLkEVeQaMWob4W44LzITuSbOF9QrOSEG6iz_Wlwx2Eh-PIAOGysA97pViTE2sRoUuhWOTKlOws7N-0GhOZjn4PU4gFsT8ha8GTZxe4h1COFiXeDuhqLKt822BOUdGos8KyyQmI9BciYQlr7GLOtBiTf4rD7zijdd-YsWKfCU5SjlLF9s-1Va4AtI4T2CQZxSf_z3XHdfZlnEZluTdCTS9s0bK-IIcyvbp3NU"/>
+</div>
+</div>
+</header>
+<!-- ========================================== -->
+<!-- PAGE CANVAS                                -->
+<!-- ========================================== -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop py-8 md:py-12 flex flex-col gap-section-gap max-w-container-max-width mx-auto w-full">
+<!-- SECTION 1: User Profile & Verification -->
+<section class="glass-panel p-6 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center md:items-start gap-8">
+<!-- Decorative subtle gradient orb -->
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Avatar Box -->
+<div class="relative shrink-0">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-surface p-1 shadow-lg shadow-primary/10 relative z-10 bg-surface-container-lowest">
+<img alt="Profile Avatar" class="w-full h-full object-cover rounded-full" data-alt="A highly detailed, professional headshot of a person dressed in elegant, modern modest wear, positioned centrally within a circular frame. The aesthetic aligns with a high-end digital sanctuary, utilizing pristine white lighting and extremely subtle teal atmospheric tones. The expression is warm yet deeply trustworthy, fitting for a premium banking profile. Background is a flawless, soft light-mode studio setup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdxJ6QQVyGyoHDnOuNSopWJlQZr5xIO0dOedW1J8L_OVfXK6GkAFgGO_7O7LBEIe4lckehXHzjqZeZZg1Vk_iRI2DUmYXZORkBLvzrnDM8MjAz2rtguHQbvGeO1eKejGAmc4m90lYbFNp_d314lO9rxG8lfsbHqqs8dDKc2ylBbt6_bqtq7l9Gx24DcmIt-8YiY2yOAA_KSTiLUVHe0bHCoYHC2lCErHHzi13tSmdArhoMKRneKDBAJ1SC2lvZ0umbVnSAzBIbkQA"/>
+</div>
+<!-- Verified Badge -->
+<div class="absolute bottom-2 right-2 md:bottom-4 md:right-4 w-8 h-8 md:w-10 md:h-10 bg-secondary rounded-full flex items-center justify-center border-2 border-surface-container-lowest shadow-sm z-20" title="Akun Terverifikasi">
+<span class="material-symbols-outlined text-on-secondary text-sm md:text-base" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<!-- Profile Details -->
+<div class="flex flex-col text-center md:text-left pt-2 md:pt-4 z-10 w-full">
+<div class="inline-flex items-center justify-center md:justify-start gap-2 mb-2">
+<span class="px-3 py-1 bg-secondary-fixed/30 text-secondary border border-secondary/20 rounded-full font-label-sm text-label-sm uppercase tracking-wider">Premium Member</span>
+</div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary-container mb-1">Ahmad Ibrahim</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Nasabah Tabungan Haji BSI</p>
+<!-- Key Info Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
+<div class="p-4 rounded-lg bg-surface-container-low/50 border border-outline-variant/20 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Nomor Rekening</span>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">7123 4567 8900</span>
+<button class="text-primary hover:text-primary-container"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low/50 border border-outline-variant/20 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Cabang Pendaftaran</span>
+<span class="font-headline-md text-headline-md text-on-surface">BSI KC Sudirman</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Status Pendaftaran (Prominent Bento Card) -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-primary-container text-on-primary rounded-xl p-8 relative overflow-hidden shadow-xl shadow-primary-container/20 border border-white/10">
+<!-- BG Texture/Pattern -->
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div class="flex justify-between items-start mb-8">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full font-label-sm text-label-sm mb-4 border border-white/20">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span> Status: Aktif
+                                    </div>
+<h3 class="font-body-lg text-body-lg text-primary-fixed-dim">Nomor Porsi Haji</h3>
+</div>
+<span class="material-symbols-outlined text-4xl text-secondary-fixed opacity-80">account_balance</span>
+</div>
+<div>
+<div class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg tracking-widest text-white mb-2">
+                                    1300 <span class="text-secondary-fixed">542</span> 891
+                                </div>
+<p class="font-label-md text-label-md text-primary-fixed opacity-90">Terdaftar pada 12 Agustus 2021</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 flex flex-col justify-center items-center text-center border-t-4 border-t-secondary relative overflow-hidden">
+<div class="absolute -bottom-10 -left-10 w-32 h-32 bg-secondary/10 rounded-full blur-2xl"></div>
+<span class="material-symbols-outlined text-5xl text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-2">Estimasi Keberangkatan</h3>
+<div class="font-display-lg text-display-lg text-primary-container">
+                            2035
+                        </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4">
+                            Wilayah DKI Jakarta
+                        </p>
+</div>
+</section>
+<!-- SECTION 3: Simulasi Keberangkatan (Interactive-feel Card) -->
+<section class="glass-panel p-6 md:p-10">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary-container mb-2">Simulasi Percepatan Berangkat</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Lihat bagaimana tambahan setoran rutin mempengaruhi estimasi tahun keberangkatan Anda.</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-outline-variant">calculate</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+<!-- Input Side -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface">Tambahan Setoran Per Bulan</label>
+<div class="flex gap-2 mt-2">
+<button class="flex-1 py-3 border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant hover:border-primary hover:text-primary transition-colors focus:ring-2 focus:ring-primary/20 outline-none">Rp 500k</button>
+<button class="flex-1 py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md shadow-sm border border-primary transition-colors">Rp 1 Juta</button>
+<button class="flex-1 py-3 border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant hover:border-primary hover:text-primary transition-colors focus:ring-2 focus:ring-primary/20 outline-none">Rp 2 Juta</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 relative pt-6">
+<label class="font-label-md text-label-md text-on-surface mb-2">Atau geser nominal (Juta Rupiah)</label>
+<div class="w-full h-2 bg-surface-variant rounded-full relative">
+<div class="absolute left-0 top-0 h-full bg-primary rounded-full w-1/3"></div>
+<div class="absolute left-1/3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white border-2 border-primary rounded-full shadow-md cursor-pointer"></div>
+</div>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm text-outline">
+<span>Rp 0</span>
+<span>Rp 5 Juta+</span>
+</div>
+</div>
+</div>
+<!-- Output Side (Results) -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 flex flex-col items-center justify-center text-center h-full relative overflow-hidden">
+<!-- Subtle graphic -->
+<span class="material-symbols-outlined text-[100px] text-surface-variant absolute -right-4 -bottom-4 opacity-50 z-0 rotate-12">hourglass_bottom</span>
+<div class="relative z-10">
+<span class="font-label-md text-label-md text-outline uppercase tracking-wider block mb-2">Proyeksi Tahun Berangkat</span>
+<div class="font-display-lg text-display-lg text-primary block mb-2">
+                                    2032
+                                </div>
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-secondary-fixed/20 text-secondary border border-secondary/30 rounded-full font-label-md text-label-md mt-2">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                                    Lebih cepat 3 Tahun
+                                </div>
+</div>
+<button class="mt-8 w-full md:w-auto px-8 py-3 bg-white text-primary border border-primary/20 rounded-lg font-label-md text-label-md hover:bg-surface-container-lowest transition-colors shadow-sm relative z-10">
+                                Terapkan Autodebet
+                            </button>
+</div>
+</div>
+</section>
+<!-- Spacing at bottom -->
+<div class="h-8"></div>
+</main>
+</div>
+<!-- Mobile Bottom Nav Fallback (Minimal structural representation for responsive pivot context, matching active state of side nav) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest/90 backdrop-blur-xl border-t border-white/40 shadow-[0_-4px_20px_rgba(0,79,76,0.05)] z-50 flex justify-around items-center px-4 py-2 pb-safe">
+<a class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-[10px] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center p-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-[10px] mt-1">Tabungan</span>
+</a>
+<!-- Active Tab Mobile -->
+<a class="flex flex-col items-center p-2 text-primary" href="#">
+<div class="px-4 py-1 bg-primary-container/10 rounded-full mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<span class="font-label-sm text-[10px] font-semibold">Profil</span>
+</a>
+</nav>
+</div>
+</body></html>

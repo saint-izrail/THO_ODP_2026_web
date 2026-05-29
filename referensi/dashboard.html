@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BSI Tabungan Haji - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffddb7",
+                        "background": "#f8f9f9",
+                        "surface-container-low": "#f3f4f4",
+                        "error": "#ba1a1a",
+                        "surface-container": "#edeeee",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#026a66",
+                        "secondary": "#78582f",
+                        "inverse-primary": "#84d4cf",
+                        "secondary-fixed-dim": "#eabf8d",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-surface": "#191c1c",
+                        "on-primary-container": "#95e5e0",
+                        "tertiary": "#6f361b",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9f9",
+                        "on-tertiary-fixed-variant": "#70371c",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1c",
+                        "surface-container-high": "#e7e8e8",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e1e3e3",
+                        "on-surface-variant": "#3e4948",
+                        "primary-fixed": "#a0f1eb",
+                        "on-secondary-container": "#795930",
+                        "secondary-container": "#fed39f",
+                        "primary-fixed-dim": "#84d4cf",
+                        "surface-variant": "#e1e3e3",
+                        "on-primary-fixed-variant": "#00504d",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#00201e",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9f9",
+                        "outline-variant": "#bec9c7",
+                        "surface-dim": "#d9dada",
+                        "primary": "#004f4c",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed": "#ffdbcd",
+                        "outline": "#6e7978",
+                        "on-tertiary-container": "#ffcdb8",
+                        "tertiary-container": "#8c4d30",
+                        "inverse-surface": "#2e3131",
+                        "on-secondary-fixed-variant": "#5e411a",
+                        "primary-container": "#006965"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 79, 76, 0.05);
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row min-h-screen bg-background font-body-md text-on-background">
+<!-- TopNavBar (Mobile) / TopAppBar (Desktop integration context) -->
+<header class="md:hidden sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile py-4 bg-surface/80 backdrop-blur-md border-b border-white/40 shadow-sm shadow-primary/5">
+<div class="font-headline-md text-headline-md font-bold text-primary">BSI Tabungan Haji</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-70 transition-all" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-70 transition-all" data-icon="help">help</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-70 transition-all" data-icon="settings">settings</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest/70 backdrop-blur-2xl border-r border-white/40 shadow-xl shadow-primary/5 p-6 gap-8 z-40">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<img alt="BSI Logo" class="w-10 h-10 rounded-full object-cover" data-alt="A small, elegant circular logo placeholder image featuring an abstract geometric Islamic star pattern in gold and deep turquoise. Clean white background. Soft lighting. High-end corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa1O55AvXm-ycNKsj3KaXC_OAvwvsEAsftDBTgbomOWoA5SgCu7g4h_BBVHYVCWWFe_SgXTnRrkZpe0DUz-50LM6GliewaEgVwi1vhF0sgQY3fJfbYbtUNGHfE0qkG27tqK9iUOPDGRGQVP8OSggRUtR9baWolh62G8bswgGyoW-DALEw9qh3fjPQltIX18vlCDnAfRDDymHt6PONBGiJRnln7xDBdEv11-WWkr9O4pdNgC0xaGtl53QD5N7v2QNfVLw0ThG-we6s"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Haji Portal</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Digital Sanctuary</p>
+</div>
+</div>
+<button class="w-full mt-4 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:bg-primary-container transition-colors">Buka Rekening Baru</button>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<!-- Active State: Dashboard -->
+<a class="flex items-center gap-3 bg-primary text-on-primary rounded-xl px-4 py-3 shadow-md shadow-primary/20 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Tabungan</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Mutasi</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profil</span>
+</a>
+</div>
+<div class="flex flex-col gap-2 pt-4 border-t border-white/40">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-primary/5 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop w-full max-w-container-max-width mx-auto">
+<!-- Top App Bar Content for Desktop (Search & Profile) -->
+<div class="hidden md:flex justify-between items-center mb-12">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">BSI Tabungan Haji</h2>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 rounded-full border-none bg-surface-container-low text-body-md focus:ring-2 focus:ring-secondary/50 focus:outline-none w-64 transition-all" placeholder="Cari..." type="text"/>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="settings">settings</span>
+</div>
+<img alt="User profile photo" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" data-alt="A professional headshot of a smiling Middle Eastern man in his 40s. He is wearing modern business casual attire. The lighting is bright and even, set against a soft, out-of-focus high-end office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCTc0Yl-v5oGkgUtQQI9EBZNcMBnx_UEFpPcVwrbVDlaDp7Iqse4Fx07fmde0ovqzAxuvzGEJQiD7NcA2F6oB9TdZfFkdcFQhBdq9iNQd0tH7Udhz-cg_JyKi8kdhpdjzrjRTieQdmulOTZ4zGJ5g77OG5_yi0FMVjJLaa3-evUaa2vC2pg5nncae-9XGbQfarFVZyoHSIa8ZTVZmi_qJub0RRs8sxKnJmskrerbw2uyvolXq3GqMnCd4DiKTrEJ8Vet38Z0hb_BE"/>
+</div>
+</div>
+<!-- Greeting -->
+<header class="mb-10">
+<h1 class="font-display-lg-mobile md:font-display-lg text-primary mb-2">Assalamu’alaikum, Ahmad Abdullah</h1>
+<p class="font-body-lg text-on-surface-variant">Selamat datang di Digital Sanctuary perjalanan ibadah Anda.</p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-section-gap">
+<!-- Main Balance Card (Spans 8 cols on desktop) -->
+<div class="md:col-span-8 glass-panel rounded-2xl p-8 md:p-10 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
+<!-- Abstract decorative background element -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-10 -bottom-10 w-48 h-48 bg-secondary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Total Saldo Tabungan</h3>
+<div class="font-display-lg-mobile md:font-display-lg text-primary mb-1">Rp 12.500.000</div>
+<p class="font-label-sm text-label-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary" data-icon="trending_up" style="font-size: 16px;">trending_up</span>
+                        +Rp 500.000 bulan ini
+                    </p>
+</div>
+<div class="relative z-10 mt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-8 py-3 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-95 flex items-center gap-2">
+                        Setor Sekarang
+                        <span class="material-symbols-outlined" data-icon="arrow_forward" style="font-size: 18px;">arrow_forward</span>
+</button>
+<button class="border border-secondary text-secondary hover:bg-secondary/5 font-label-md text-label-md px-6 py-3 rounded-xl transition-all active:scale-95">
+                        Riwayat Transaksi
+                    </button>
+</div>
+</div>
+<!-- Departure Estimation Card (Spans 4 cols on desktop) -->
+<div class="md:col-span-4 glass-panel rounded-2xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden bg-gradient-to-br from-surface to-surface-container-low min-h-[300px]">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="flight_takeoff" data-weight="fill">flight_takeoff</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-3">Estimasi Keberangkatan</h3>
+<div class="font-headline-md text-headline-md text-secondary font-bold mb-1">2032 M / 1453 H</div>
+<p class="font-label-sm text-label-sm text-outline mt-4 px-4">Estimasi berdasarkan porsi Haji reguler saat ini.</p>
+<!-- Decorative pattern -->
+<div class="absolute bottom-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-50"></div>
+</div>
+</div>
+<!-- Hajj Progress Section -->
+<section class="mb-section-gap">
+<h2 class="font-headline-md text-headline-md text-primary mb-8">Langkah Menuju Baitullah</h2>
+<div class="glass-panel rounded-2xl p-8">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Target Saldo Pelunasan</p>
+<p class="font-body-lg text-primary font-semibold">Rp 25.000.000</p>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Tercapai</p>
+<p class="font-headline-md text-headline-md text-secondary">50%</p>
+</div>
+</div>
+<!-- Custom Progress Bar -->
+<div class="relative w-full h-3 bg-surface-container-high rounded-full overflow-hidden mb-6 shadow-inner">
+<div class="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-primary-container rounded-full w-1/2 transition-all duration-1000 ease-in-out relative">
+<!-- Shimmer effect -->
+<div class="absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 text-center mt-8 relative">
+<!-- Progress Nodes connected by a line (visual only, actual line handled differently to not mess up flex) -->
+<div class="absolute top-4 left-[16%] right-[16%] h-0.5 bg-surface-container-high -z-10"></div>
+<div class="absolute top-4 left-[16%] right-[50%] h-0.5 bg-secondary -z-10"></div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center mb-3 shadow-md shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="check" style="font-size: 16px;">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">Daftar Porsi</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 border-secondary bg-surface flex items-center justify-center mb-3 text-secondary shadow-sm shadow-secondary/10">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Menabung</span>
+</div>
+<div class="flex flex-col items-center opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center mb-3 text-outline">
+<span class="material-symbols-outlined" data-icon="mosque" style="font-size: 16px;">mosque</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Pelunasan</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Services -->
+<section class="mb-12">
+<h2 class="font-headline-md text-headline-md text-primary mb-8">Layanan Cepat</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<a class="glass-panel p-6 rounded-xl flex flex-col items-center text-center hover:bg-surface-container-low transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 group cursor-pointer" href="#">
+<div class="w-12 h-12 rounded-full bg-primary/5 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="format_list_numbered">format_list_numbered</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Cek Antrian</span>
+</a>
+<a class="glass-panel p-6 rounded-xl flex flex-col items-center text-center hover:bg-surface-container-low transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 group cursor-pointer" href="#">
+<div class="w-12 h-12 rounded-full bg-primary/5 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Panduan Manasik</span>
+</a>
+<a class="glass-panel p-6 rounded-xl flex flex-col items-center text-center hover:bg-surface-container-low transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 group cursor-pointer" href="#">
+<div class="w-12 h-12 rounded-full bg-primary/5 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="headset_mic">headset_mic</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Bantuan</span>
+</a>
+<a class="glass-panel p-6 rounded-xl flex flex-col items-center text-center hover:bg-surface-container-low transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 group cursor-pointer border border-dashed border-outline-variant" href="#">
+<div class="w-12 h-12 rounded-full bg-surface text-outline flex items-center justify-center mb-4">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</div>
+<span class="font-label-md text-label-md text-outline">Tambah Layanan</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Tailwind Custom Animations -->
+<style>
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</body></html>
