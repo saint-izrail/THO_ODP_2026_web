@@ -1,12 +1,21 @@
-import { HealthStatusIndicator } from "@/components/health-status";
+"use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { isAuthenticated } from "@/lib/auth";
+
+// Root "/" hanya gerbang masuk: arahkan ke dashboard bila sudah login,
+// selain itu ke halaman login.
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace(isAuthenticated() ? "/dashboard" : "/login");
+  }, [router]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-8">
-      <h1 className="text-2xl font-bold">Tabungan Haji</h1>
-      <div className="w-full max-w-md">
-        <HealthStatusIndicator />
-      </div>
+    <main className="flex min-h-screen flex-1 items-center justify-center bg-gradient-to-br from-[#e8f5f4] via-background to-[#fdf6ec] text-muted">
+      <span role="status">Memuat...</span>
     </main>
   );
 }
