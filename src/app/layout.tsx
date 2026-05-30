@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 // Terapkan tema dari localStorage sebelum paint (default: dark) agar tak kedip.
-const themeInit = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();`;
+const themeInit = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='light';document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();`;
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      data-theme="dark"
+      data-theme="light"
       suppressHydrationWarning
       className={`${plusJakarta.variable} ${geistMono.variable} h-full antialiased`}
     >

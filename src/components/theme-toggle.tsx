@@ -10,10 +10,10 @@ import { IconSun, IconMoon } from "@/components/icons";
 type Theme = "light" | "dark";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const current = (document.documentElement.dataset.theme as Theme) || "dark";
+    const current = (document.documentElement.dataset.theme as Theme) || "light";
     setTheme(current);
   }, []);
 
