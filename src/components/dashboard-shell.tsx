@@ -75,7 +75,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-1 flex-col bg-background md:flex-row">
       {/* Header mobile */}
-      <header className="sticky top-0 z-50 flex w-full items-center justify-between border-b border-white/40 bg-white/80 px-5 py-4 shadow-sm backdrop-blur-md md:hidden">
+      <header className="sticky top-0 z-50 flex w-full items-center justify-between border-b border-edge bg-surface px-5 py-4 shadow-sm backdrop-blur-md md:hidden">
         <span className="text-lg font-bold text-primary-deep">BSI Tabungan Haji</span>
         <button onClick={handleLogout} aria-label="Keluar" className="text-primary-deep">
           <IconLogout className="h-5 w-5" />
@@ -83,7 +83,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Sidebar desktop */}
-      <nav aria-label="Navigasi utama" className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col gap-8 border-r border-white/40 bg-white/70 p-6 shadow-xl shadow-primary/5 backdrop-blur-2xl md:flex">
+      <nav aria-label="Navigasi utama" className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col gap-8 border-r border-edge bg-surface p-6 shadow-xl shadow-primary/5 backdrop-blur-2xl md:flex">
         <div>
           <div className="flex items-center gap-3">
             <div aria-hidden className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -94,7 +94,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               <p className="text-xs text-muted">Digital Sanctuary</p>
             </div>
           </div>
-          <Link href="/dashboard/tabungan" className="mt-5 flex w-full items-center justify-center rounded-lg bg-primary-dark py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-deep">
+          <Link href="/dashboard/tabungan" className="mt-5 flex w-full items-center justify-center rounded-lg bg-primary-dark py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-primary-deep">
             Buka Rekening Baru
           </Link>
         </div>
@@ -110,7 +110,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                 aria-current={active ? "page" : undefined}
                 className={
                   active
-                    ? "flex items-center gap-3 rounded-xl bg-primary-dark px-4 py-3 text-sm font-semibold text-white shadow-md shadow-primary/20"
+                    ? "flex items-center gap-3 rounded-xl bg-primary-dark px-4 py-3 text-sm font-semibold text-on-accent shadow-md shadow-primary/20"
                     : "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-muted transition-all hover:bg-primary/5 hover:text-primary-deep"
                 }
               >
@@ -121,7 +121,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           })}
         </div>
 
-        <div className="flex flex-col gap-1.5 border-t border-white/40 pt-4">
+        <div className="flex flex-col gap-1.5 border-t border-edge pt-4">
           <button type="button" title="Segera hadir" className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium text-muted transition-all hover:bg-primary/5 hover:text-primary-deep">
             <IconSupport className="h-5 w-5" />
             Support
@@ -147,7 +147,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                 type="text"
                 placeholder="Cari..."
                 aria-label="Cari"
-                className="w-56 rounded-full border border-line/60 bg-white/70 py-2 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-muted focus:border-primary-dark focus:ring-4 focus:ring-primary/15"
+                className="w-56 rounded-full border border-edge-strong bg-surface py-2 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-muted focus:border-primary-dark focus:ring-4 focus:ring-primary/15"
               />
             </div>
             <button type="button" aria-label="Notifikasi" className="text-primary-deep transition-colors hover:text-primary-dark">
@@ -158,7 +158,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             </button>
             <div
               aria-label={`Akun: ${user.nama}`}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-dark text-sm font-semibold text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-dark text-sm font-semibold text-on-accent"
             >
               <span aria-hidden>{initials(user.nama)}</span>
             </div>

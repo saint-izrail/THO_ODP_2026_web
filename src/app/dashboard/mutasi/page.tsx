@@ -87,7 +87,7 @@ export default function MutasiPage() {
       </header>
 
       {phase === "loading" ? (
-        <div role="status" aria-busy="true" className="h-64 animate-pulse rounded-2xl bg-white/60 motion-reduce:animate-none">
+        <div role="status" aria-busy="true" className="h-64 animate-pulse rounded-2xl bg-surface motion-reduce:animate-none">
           <span className="sr-only">Memuat mutasi…</span>
         </div>
       ) : phase === "error" ? (
@@ -96,19 +96,19 @@ export default function MutasiPage() {
           <p className="mt-2 text-sm text-muted">Coba muat ulang halaman.</p>
         </div>
       ) : phase === "no-account" ? (
-        <div className="rounded-2xl border border-white/60 bg-white/75 p-10 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+        <div className="rounded-2xl border border-edge bg-surface p-10 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
           <div aria-hidden className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
             <IconReceipt className="h-8 w-8" />
           </div>
           <h2 className="mt-5 text-xl font-bold text-primary-deep">Belum ada rekening</h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-muted">Buka rekening tabungan haji dulu untuk melihat mutasi.</p>
-          <Link href="/dashboard/tabungan" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep">
+          <Link href="/dashboard/tabungan" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep">
             Ke Halaman Tabungan
             <IconArrowRight className="h-4 w-4" />
           </Link>
         </div>
       ) : (
-        <div className="rounded-2xl border border-white/60 bg-white/75 p-6 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl md:p-8">
+        <div className="rounded-2xl border border-edge bg-surface p-6 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl md:p-8">
           {/* Filter */}
           <div className="mb-5 flex items-center justify-between gap-4">
             <label htmlFor="jenis" className="sr-only">Filter jenis transaksi</label>
@@ -116,7 +116,7 @@ export default function MutasiPage() {
               id="jenis"
               value={jenis}
               onChange={(e) => { setJenis(e.target.value); setPage(1); }}
-              className="rounded-xl border border-line/70 bg-white/70 py-2.5 px-4 text-sm text-ink outline-none transition-all focus:border-primary-dark focus:ring-4 focus:ring-primary/15"
+              className="rounded-xl border border-edge-strong bg-surface py-2.5 px-4 text-sm text-ink outline-none transition-all focus:border-primary-dark focus:ring-4 focus:ring-primary/15"
             >
               {JENIS_OPTS.map((o) => (
                 <option key={o.value} value={o.value}>{o.label}</option>
@@ -126,7 +126,7 @@ export default function MutasiPage() {
           </div>
 
           {listLoading ? (
-            <div role="status" aria-busy="true" className="h-48 animate-pulse rounded-xl bg-white/50 motion-reduce:animate-none">
+            <div role="status" aria-busy="true" className="h-48 animate-pulse rounded-xl bg-surface motion-reduce:animate-none">
               <span className="sr-only">Memuat…</span>
             </div>
           ) : !data || data.items.length === 0 ? (
@@ -137,7 +137,7 @@ export default function MutasiPage() {
               <div className="hidden overflow-x-auto md:block">
                 <table className="w-full text-left text-sm">
                   <thead>
-                    <tr className="border-b border-line/50 text-xs uppercase tracking-wider text-muted">
+                    <tr className="border-b border-edge text-xs uppercase tracking-wider text-muted">
                       <th scope="col" className="py-3 pr-4 font-semibold">Waktu</th>
                       <th scope="col" className="py-3 pr-4 font-semibold">Jenis</th>
                       <th scope="col" className="py-3 pr-4 font-semibold">Metode</th>
@@ -147,7 +147,7 @@ export default function MutasiPage() {
                   </thead>
                   <tbody>
                     {data.items.map((t) => (
-                      <tr key={t.id} className="border-b border-line/30 last:border-0">
+                      <tr key={t.id} className="border-b border-edge last:border-0">
                         <td className="py-3 pr-4 text-muted">{formatTanggal(t.waktu)}</td>
                         <td className="py-3 pr-4">
                           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary-deep">{t.jenis}</span>
@@ -164,7 +164,7 @@ export default function MutasiPage() {
               {/* Kartu (mobile) */}
               <ul className="flex flex-col gap-3 md:hidden">
                 {data.items.map((t) => (
-                  <li key={t.id} className="rounded-xl border border-line/40 bg-white/50 p-4">
+                  <li key={t.id} className="rounded-xl border border-edge bg-surface-2 p-4">
                     <div className="flex items-center justify-between">
                       <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary-deep">{t.jenis}</span>
                       <span className="font-semibold text-success">+{formatRupiah(t.nominal)}</span>
@@ -183,7 +183,7 @@ export default function MutasiPage() {
                   type="button"
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={page <= 1}
-                  className="rounded-lg border border-line/70 px-4 py-2 text-sm font-medium text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
+                  className="rounded-lg border border-edge-strong px-4 py-2 text-sm font-medium text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
                 >
                   Sebelumnya
                 </button>
@@ -192,7 +192,7 @@ export default function MutasiPage() {
                   type="button"
                   onClick={() => setPage((p) => Math.min(data.totalPages || 1, p + 1))}
                   disabled={page >= (data.totalPages || 1)}
-                  className="rounded-lg border border-line/70 px-4 py-2 text-sm font-medium text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
+                  className="rounded-lg border border-edge-strong px-4 py-2 text-sm font-medium text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
                 >
                   Berikutnya
                 </button>

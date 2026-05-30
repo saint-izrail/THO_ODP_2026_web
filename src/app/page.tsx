@@ -14,7 +14,7 @@ export default function Home() {
   }, [router]);
 
   return (
-    <main className="flex min-h-screen flex-1 items-center justify-center bg-gradient-to-br from-[#e8f5f4] via-background to-[#fdf6ec] text-muted">
+    <main className="flex min-h-screen flex-1 items-center justify-center bg-gradient-to-br from-primary/5 via-background to-gold/5 text-muted">
       <span role="status">Memuat...</span>
     </main>
   );

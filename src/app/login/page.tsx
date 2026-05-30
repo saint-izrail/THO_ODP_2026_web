@@ -16,14 +16,14 @@ function MosqueLogo() {
 
 export default function LoginPage() {
   return (
-    <main className="relative flex min-h-screen flex-1 items-center justify-center overflow-hidden bg-gradient-to-br from-[#e8f5f4] via-background to-[#fdf6ec] p-4 md:p-8">
+    <main className="relative flex min-h-screen flex-1 items-center justify-center overflow-hidden bg-gradient-to-br from-primary/5 via-background to-gold/5 p-4 md:p-8">
       {/* Orb dekoratif */}
       <div aria-hidden className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-primary/10 blur-[100px]" />
       <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-24 h-96 w-96 rounded-full bg-gold/10 blur-[120px]" />
 
       <div className="relative z-10 flex w-full max-w-[460px] flex-col items-center">
         {/* Kartu login */}
-        <div className="w-full rounded-[2rem] border border-white/70 bg-white/80 p-8 shadow-[0_12px_48px_-12px_rgba(0,79,76,0.18)] backdrop-blur-2xl md:p-11">
+        <div className="w-full rounded-[2rem] border border-edge bg-surface p-8 shadow-[0_12px_48px_-12px_rgba(0,79,76,0.18)] backdrop-blur-2xl md:p-11">
           {/* Branding */}
           <div className="mb-9 flex flex-col items-center text-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/15 bg-primary/10 text-primary">

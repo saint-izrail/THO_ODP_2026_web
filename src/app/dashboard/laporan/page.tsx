@@ -61,7 +61,7 @@ export default function LaporanPage() {
         <p className="mt-2 text-base text-muted">Unduh laporan transaksi dalam format CSV per bulan.</p>
       </header>
 
-      <section className="rounded-2xl border border-white/60 bg-white/75 p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+      <section className="rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
         <div className="mb-6 flex items-center gap-4">
           <div aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
             <IconChart className="h-6 w-6" />
@@ -82,13 +82,13 @@ export default function LaporanPage() {
               disabled={loading}
               onChange={(e) => setMonth(e.target.value)}
               aria-invalid={!!error}
-              className={`w-full rounded-xl border bg-white/70 py-3.5 px-4 text-base text-ink outline-none transition-all focus:bg-white focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${error ? "border-danger/60 focus:border-danger" : "border-line/70 focus:border-primary-dark"}`}
+              className={`w-full rounded-xl border bg-surface py-3.5 px-4 text-base text-ink outline-none transition-all focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${error ? "border-danger/60 focus:border-danger" : "border-edge-strong focus:border-primary-dark"}`}
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-8 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-95 disabled:opacity-70"
+            className="flex items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-8 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-95 disabled:opacity-70"
           >
             <IconDownload className="h-5 w-5" />
             {loading ? "Memproses..." : "Unduh CSV"}
@@ -104,7 +104,7 @@ export default function LaporanPage() {
             <p className="mb-2 text-sm text-success">
               Berkas <span className="font-semibold">transaksi-{result.month}.csv</span> terunduh · {result.rows} baris data.
             </p>
-            <div className="overflow-x-auto rounded-xl border border-line/40 bg-line/5">
+            <div className="overflow-x-auto rounded-xl border border-edge bg-surface-2">
               <pre className="p-4 text-xs leading-relaxed text-muted">{result.preview || "(kosong)"}</pre>
             </div>
           </div>

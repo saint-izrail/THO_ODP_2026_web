@@ -239,7 +239,7 @@ export default function NasabahPage() {
         <button
           type="button"
           onClick={openCreate}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-dark px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98]"
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-dark px-5 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98]"
         >
           <IconPlus className="h-4 w-4" />
           Tambah Nasabah
@@ -256,7 +256,7 @@ export default function NasabahPage() {
       {panelOpen && (
         <section
           aria-label={editingId === null ? "Tambah nasabah" : "Edit nasabah"}
-          className="mb-6 rounded-2xl border border-white/60 bg-white/75 p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl"
+          className="mb-6 rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl"
         >
           <h2 className="mb-5 text-lg font-bold text-primary-deep">
             {editingId === null ? "Tambah Nasabah Baru" : "Edit Data Nasabah"}
@@ -285,7 +285,7 @@ export default function NasabahPage() {
                     }
                     aria-invalid={!!err}
                     aria-describedby={err ? `${f.id}-err` : undefined}
-                    className={`w-full rounded-xl border bg-white/70 py-3.5 px-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-white focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${err ? "border-danger/60 focus:border-danger" : "border-line/70 focus:border-primary-dark"}`}
+                    className={`w-full rounded-xl border bg-surface py-3.5 px-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${err ? "border-danger/60 focus:border-danger" : "border-edge-strong focus:border-primary-dark"}`}
                   />
                   {err && <p id={`${f.id}-err`} className="ml-1 text-xs text-danger">{err}</p>}
                 </div>
@@ -293,7 +293,7 @@ export default function NasabahPage() {
             })}
 
             {editingId !== null && (
-              <div className="rounded-xl border border-line/30 bg-line/10 p-3 text-xs text-muted sm:col-span-2">
+              <div className="rounded-xl border border-edge bg-surface-2 p-3 text-xs text-muted sm:col-span-2">
                 NIK ({form.nik}) tidak dapat diubah.
               </div>
             )}
@@ -305,10 +305,10 @@ export default function NasabahPage() {
             )}
 
             <div className="flex gap-3 sm:col-span-2">
-              <button type="submit" disabled={submitting} className="flex-1 rounded-xl bg-primary-dark py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70">
+              <button type="submit" disabled={submitting} className="flex-1 rounded-xl bg-primary-dark py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70">
                 {submitting ? "Menyimpan..." : editingId === null ? "Tambah Nasabah" : "Simpan Perubahan"}
               </button>
-              <button type="button" disabled={submitting} onClick={closePanel} className="rounded-xl border border-line/70 px-6 py-3 text-sm font-semibold text-muted transition-colors hover:bg-line/10 disabled:opacity-60">
+              <button type="button" disabled={submitting} onClick={closePanel} className="rounded-xl border border-edge-strong px-6 py-3 text-sm font-semibold text-muted transition-colors hover:bg-surface-2 disabled:opacity-60">
                 Batal
               </button>
             </div>
@@ -328,7 +328,7 @@ export default function NasabahPage() {
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Cari nama, NIK, atau email..."
             aria-label="Cari nasabah"
-            className="w-full rounded-xl border border-line/60 bg-white/70 py-3 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-muted focus:border-primary-dark focus:ring-4 focus:ring-primary/15"
+            className="w-full rounded-xl border border-edge-strong bg-surface py-3 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-muted focus:border-primary-dark focus:ring-4 focus:ring-primary/15"
           />
         </div>
         <button type="submit" className="rounded-xl border border-primary-dark/30 px-5 py-3 text-sm font-semibold text-primary-deep transition-colors hover:bg-primary/5">
@@ -337,9 +337,9 @@ export default function NasabahPage() {
       </form>
 
       {/* Tabel */}
-      <section className="overflow-hidden rounded-2xl border border-white/60 bg-white/75 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+      <section className="overflow-hidden rounded-2xl border border-edge bg-surface shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
         {loading ? (
-          <div role="status" aria-busy="true" className="h-72 animate-pulse bg-white/40 motion-reduce:animate-none">
+          <div role="status" aria-busy="true" className="h-72 animate-pulse bg-surface motion-reduce:animate-none">
             <span className="sr-only">Memuat data nasabah…</span>
           </div>
         ) : loadError ? (
@@ -365,7 +365,7 @@ export default function NasabahPage() {
           <div className="overflow-x-auto">
             <table className="w-full min-w-[640px] border-collapse text-left">
               <thead>
-                <tr className="border-b border-line/30 bg-primary/[0.03]">
+                <tr className="border-b border-edge bg-primary/[0.03]">
                   <th scope="col" className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted">#</th>
                   <th scope="col" className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted">Nama / NIK</th>
                   <th scope="col" className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted">Email</th>
@@ -402,7 +402,7 @@ export default function NasabahPage() {
               type="button"
               disabled={page <= 1}
               onClick={() => setPage((p) => Math.max(1, p - 1))}
-              className="rounded-xl border border-line/70 px-4 py-2 text-sm font-semibold text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
+              className="rounded-xl border border-edge-strong px-4 py-2 text-sm font-semibold text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
             >
               Sebelumnya
             </button>
@@ -410,7 +410,7 @@ export default function NasabahPage() {
               type="button"
               disabled={page >= totalPages}
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              className="rounded-xl border border-line/70 px-4 py-2 text-sm font-semibold text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
+              className="rounded-xl border border-edge-strong px-4 py-2 text-sm font-semibold text-primary-deep transition-colors hover:bg-primary/5 disabled:opacity-40"
             >
               Berikutnya
             </button>

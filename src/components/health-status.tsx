@@ -62,12 +62,12 @@ export function HealthStatusIndicator() {
   const { color, label } = config[status];
 
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-gray-200 px-4 py-3 dark:border-gray-700">
+    <div className="flex items-center gap-3 rounded-lg border border-edge bg-surface-2 px-4 py-3">
       <span className={`inline-block h-3 w-3 shrink-0 rounded-full ${color}`} />
       <div className="flex-1">
         <p className="text-sm font-medium">{label}</p>
         {detail && (
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-muted">
             {detail.service} ·{" "}
             {new Date(detail.timestamp).toLocaleTimeString("id-ID")}
           </p>
@@ -76,7 +76,7 @@ export function HealthStatusIndicator() {
       <button
         onClick={checkHealth}
         disabled={status === "loading"}
-        className="rounded-md border border-gray-300 px-3 py-1 text-xs font-medium hover:bg-gray-100 disabled:opacity-50 dark:border-gray-600 dark:hover:bg-gray-800"
+        className="rounded-md border border-edge px-3 py-1 text-xs font-medium hover:bg-surface-3 disabled:opacity-50"
       >
         Cek ulang
       </button>

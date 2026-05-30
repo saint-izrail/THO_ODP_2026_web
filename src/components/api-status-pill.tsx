@@ -28,7 +28,7 @@ export function ApiStatusPill() {
     <div
       role="status"
       aria-live="polite"
-      className="flex items-center gap-2 rounded-full border border-line/40 bg-white/50 px-4 py-1.5 backdrop-blur-sm"
+      className="flex items-center gap-2 rounded-full border border-edge bg-surface-2 px-4 py-1.5 backdrop-blur-sm"
     >
       <span aria-hidden="true" className="relative flex h-2 w-2">
         <span className={`absolute inline-flex h-full w-full animate-ping rounded-full motion-reduce:animate-none ${cfg.dot} opacity-60`} />

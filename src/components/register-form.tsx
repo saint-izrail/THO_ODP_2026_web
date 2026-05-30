@@ -44,7 +44,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const HP_RE = /^08\d{8,11}$/;
 
 const inputCls =
-  "w-full rounded-xl border bg-white/70 py-3.5 pl-12 pr-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-white focus:ring-4 focus:ring-primary/20";
+  "w-full rounded-xl border bg-surface py-3.5 pl-12 pr-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-surface-3 focus:ring-4 focus:ring-primary/20";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -158,7 +158,7 @@ export function RegisterForm() {
             disabled={loading}
             aria-invalid={!!err}
             aria-describedby={describedBy}
-            className={`${inputCls} ${opts?.rightSlot ? "pr-12" : ""} ${err ? "border-danger/60 focus:border-danger" : "border-line/70 focus:border-primary-dark"} disabled:opacity-60`}
+            className={`${inputCls} ${opts?.rightSlot ? "pr-12" : ""} ${err ? "border-danger/60 focus:border-danger" : "border-edge-strong focus:border-primary-dark"} disabled:opacity-60`}
             {...props}
           />
           {opts?.rightSlot}
@@ -219,7 +219,7 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={loading}
-        className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-6 text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep hover:shadow-primary/35 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-6 text-base font-semibold text-on-accent shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep hover:shadow-primary/35 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {loading ? (<><Spinner /> Memproses...</>) : "Daftar Akun"}
       </button>

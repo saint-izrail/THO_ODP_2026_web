@@ -136,7 +136,7 @@ export default function ProfilPage() {
 
   if (loading) {
     return (
-      <div role="status" aria-busy="true" className="h-72 animate-pulse rounded-2xl bg-white/60 motion-reduce:animate-none">
+      <div role="status" aria-busy="true" className="h-72 animate-pulse rounded-2xl bg-surface motion-reduce:animate-none">
         <span className="sr-only">Memuat profil…</span>
       </div>
     );
@@ -169,15 +169,15 @@ export default function ProfilPage() {
       )}
 
       {/* Kartu profil */}
-      <section className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/75 p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl md:p-10">
+      <section className="relative overflow-hidden rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl md:p-10">
         <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
         <div className="relative z-10 flex flex-col items-center gap-8 md:flex-row md:items-start">
           {/* Avatar */}
           <div className="relative shrink-0">
-            <div className="flex h-32 w-32 items-center justify-center rounded-full border-4 border-white bg-primary-dark text-4xl font-bold text-white shadow-lg shadow-primary/10">
+            <div className="flex h-32 w-32 items-center justify-center rounded-full border-4 border-edge bg-primary-dark text-4xl font-bold text-on-accent shadow-lg shadow-primary/10">
               <span aria-hidden>{initials(nasabah.nama)}</span>
             </div>
-            <span aria-label="Akun terverifikasi" title="Akun terverifikasi" className="absolute bottom-1 right-1 flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-secondary text-white">
+            <span aria-label="Akun terverifikasi" title="Akun terverifikasi" className="absolute bottom-1 right-1 flex h-9 w-9 items-center justify-center rounded-full border-2 border-edge bg-secondary text-on-accent">
               <IconVerified className="h-5 w-5" />
             </span>
           </div>
@@ -191,7 +191,7 @@ export default function ProfilPage() {
 
             <dl className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {info.map((it) => (
-                <div key={it.label} className="rounded-xl border border-line/30 bg-white/50 p-4 text-left">
+                <div key={it.label} className="rounded-xl border border-edge bg-surface-2 p-4 text-left">
                   <dt className="text-xs uppercase tracking-wider text-muted">{it.label}</dt>
                   <dd className="mt-1 font-semibold text-ink">{it.value}</dd>
                 </div>
@@ -214,7 +214,7 @@ export default function ProfilPage() {
 
       {/* Form edit */}
       {editing && (
-        <section aria-label="Edit profil" className="mt-6 rounded-2xl border border-white/60 bg-white/75 p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+        <section aria-label="Edit profil" className="mt-6 rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
           <h2 className="mb-5 text-lg font-bold text-primary-deep">Edit Data Diri</h2>
           <form onSubmit={handleSave} className="flex flex-col gap-4" noValidate aria-busy={saving}>
             {([
@@ -235,14 +235,14 @@ export default function ProfilPage() {
                     onChange={(e) => setField(f.id, f.id === "nomorHp" ? e.target.value.replace(/\D/g, "").slice(0, 13) : e.target.value)}
                     aria-invalid={!!err}
                     aria-describedby={err ? `${f.id}-err` : undefined}
-                    className={`w-full rounded-xl border bg-white/70 py-3.5 px-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-white focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${err ? "border-danger/60 focus:border-danger" : "border-line/70 focus:border-primary-dark"}`}
+                    className={`w-full rounded-xl border bg-surface py-3.5 px-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${err ? "border-danger/60 focus:border-danger" : "border-edge-strong focus:border-primary-dark"}`}
                   />
                   {err && <p id={`${f.id}-err`} className="ml-1 text-xs text-danger">{err}</p>}
                 </div>
               );
             })}
 
-            <div className="rounded-xl border border-line/30 bg-line/10 p-3 text-xs text-muted">
+            <div className="rounded-xl border border-edge bg-surface-2 p-3 text-xs text-muted">
               NIK ({nasabah.nik}) tidak dapat diubah.
             </div>
 
@@ -251,10 +251,10 @@ export default function ProfilPage() {
             )}
 
             <div className="flex gap-3">
-              <button type="submit" disabled={saving} className="flex-1 rounded-xl bg-primary-dark py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70">
+              <button type="submit" disabled={saving} className="flex-1 rounded-xl bg-primary-dark py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70">
                 {saving ? "Menyimpan..." : "Simpan Perubahan"}
               </button>
-              <button type="button" disabled={saving} onClick={() => setEditing(false)} className="rounded-xl border border-line/70 px-6 py-3 text-sm font-semibold text-muted transition-colors hover:bg-line/10 disabled:opacity-60">
+              <button type="button" disabled={saving} onClick={() => setEditing(false)} className="rounded-xl border border-edge-strong px-6 py-3 text-sm font-semibold text-muted transition-colors hover:bg-surface-2 disabled:opacity-60">
                 Batal
               </button>
             </div>
@@ -264,7 +264,7 @@ export default function ProfilPage() {
 
       {/* Info rekening ringkas */}
       {tabungan && (
-        <section aria-label="Ringkasan rekening" className="mt-6 flex items-center gap-4 rounded-2xl border border-white/60 bg-white/75 p-6 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+        <section aria-label="Ringkasan rekening" className="mt-6 flex items-center gap-4 rounded-2xl border border-edge bg-surface p-6 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
           <div aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
             <IconBank className="h-6 w-6" />
           </div>

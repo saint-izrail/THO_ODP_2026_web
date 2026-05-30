@@ -1,8 +1,73 @@
 @import "tailwindcss";
 
-:root {
+/* =====================================================================
+   DUA TEMA — ditukar lewat atribut [data-theme] di <html>.
+   :root            -> LIGHT  (brand BSI teal/emas di atas putih)
+   [data-theme=dark] -> DARK  (black & gold, mewah futuristik)
+   Komponen memakai token semantik (surface/edge/on-accent), jadi satu
+   set JSX otomatis mengikuti tema aktif.
+   ===================================================================== */
+
+:root,
+:root[data-theme="light"] {
   --background: #f8f9f9;
   --foreground: #191c1c;
+
+  --primary: #00a39d; /* teal/tosca BSI */
+  --primary-dark: #007a75;
+  --primary-deep: #004f4c;
+  --gold: #f8ad3c;
+  --gold-soft: #fed39f;
+  --secondary: #78582f;
+  --ink: #191c1c;
+  --muted: #3e4948;
+  --line: #bec9c7;
+  --danger: #ba1a1a;
+  --success: #10b981;
+
+  /* Surface semantik (glass) */
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-2: rgba(255, 255, 255, 0.5);
+  --surface-3: #ffffff;
+  --edge: rgba(190, 201, 199, 0.5);
+  --edge-strong: rgba(190, 201, 199, 0.7);
+  --on-accent: #ffffff; /* teks di atas tombol berwarna */
+  --shimmer: rgba(255, 255, 255, 0.6);
+
+  --body-bg:
+    radial-gradient(1100px 520px at 50% -10%, rgba(0, 163, 157, 0.07), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(248, 173, 60, 0.06), transparent 55%),
+    var(--background);
+}
+
+:root[data-theme="dark"] {
+  --background: #0a0a0c;
+  --foreground: #f2ead6;
+
+  --primary: #d4af37; /* emas */
+  --primary-dark: #caa233;
+  --primary-deep: #ecd58c;
+  --gold: #e7c66a;
+  --gold-soft: #5a4a1e;
+  --secondary: #d8b75a;
+  --ink: #f2ead6;
+  --muted: #9d968a;
+  --line: #2a2823;
+  --danger: #ff6b6b;
+  --success: #54d98c;
+
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.03);
+  --surface-3: rgba(255, 255, 255, 0.06);
+  --edge: rgba(255, 255, 255, 0.1);
+  --edge-strong: rgba(255, 255, 255, 0.15);
+  --on-accent: #0a0a0c; /* teks gelap di atas emas */
+  --shimmer: rgba(255, 255, 255, 0.12);
+
+  --body-bg:
+    radial-gradient(1100px 520px at 50% -10%, rgba(212, 175, 55, 0.1), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(212, 175, 55, 0.05), transparent 55%),
+    var(--background);
 }
 
 @theme inline {
@@ -11,24 +76,66 @@
   --font-sans: var(--font-plus-jakarta), system-ui, -apple-system, Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 
-  /* === Brand Bank Syariah Indonesia (BSI) === */
-  --color-primary: #00a39d; /* Teal/hijau tosca BSI (resmi) */
-  --color-primary-dark: #007a75; /* hover / kedalaman */
-  --color-primary-deep: #004f4c; /* deep teal (gaya referensi) untuk teks & aksen */
-  --color-gold: #f8ad3c; /* Emas BSI (resmi) — aksen terang */
-  --color-gold-soft: #fed39f; /* krem emas lembut */
-  --color-secondary: #78582f; /* emas/perunggu tua (gaya referensi) — teks/aksen kontras */
-  --color-ink: #191c1c; /* teks utama */
-  --color-muted: #3e4948; /* teks sekunder */
-  --color-line: #bec9c7; /* border halus */
-  --color-danger: #ba1a1a;
-  --color-success: #10b981;
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-deep: var(--primary-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-secondary: var(--secondary);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  /* token surface semantik -> jadi utilitas bg-surface, border-edge, dll */
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-edge: var(--edge);
+  --color-edge-strong: var(--edge-strong);
+  --color-on-accent: var(--on-accent);
+  --color-shimmer: var(--shimmer);
+}
+
+html {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
+  background: var(--body-bg);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-plus-jakarta), system-ui, Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Scrollbar & seleksi mengikuti warna aksen tema */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--primary) 35%, transparent) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--primary) 30%, transparent);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--primary) 50%, transparent);
+  background-clip: content-box;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 30%, transparent);
+  color: var(--foreground);
 }
 
 @keyframes shimmer {

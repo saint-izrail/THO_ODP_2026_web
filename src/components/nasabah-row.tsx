@@ -18,7 +18,7 @@ export function NasabahRow({
   onDelete: (n: NasabahDetail) => void;
 }) {
   return (
-    <tr className="border-b border-line/20 transition-colors last:border-0 hover:bg-primary/[0.03]">
+    <tr className="border-b border-edge transition-colors last:border-0 hover:bg-primary/[0.03]">
       <td className="px-4 py-3 text-sm text-muted">{index}</td>
       <td className="px-4 py-3">
         <p className="font-semibold text-ink">{nasabah.nama}</p>

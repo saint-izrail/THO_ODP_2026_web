@@ -120,7 +120,7 @@ export default function TabunganPage() {
       </header>
 
       {loading ? (
-        <div role="status" aria-busy="true" className="h-72 animate-pulse rounded-2xl bg-white/60 motion-reduce:animate-none">
+        <div role="status" aria-busy="true" className="h-72 animate-pulse rounded-2xl bg-surface motion-reduce:animate-none">
           <span className="sr-only">Memuat data tabungan…</span>
         </div>
       ) : loadError ? (
@@ -130,7 +130,7 @@ export default function TabunganPage() {
         </div>
       ) : !tabungan ? (
         /* Belum punya rekening → buka */
-        <div className="rounded-2xl border border-white/60 bg-white/75 p-10 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+        <div className="rounded-2xl border border-edge bg-surface p-10 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
           <div aria-hidden className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
             <IconWallet className="h-8 w-8" />
           </div>
@@ -147,7 +147,7 @@ export default function TabunganPage() {
             type="button"
             onClick={handleBuka}
             disabled={bukaLoading}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70"
           >
             {bukaLoading ? "Memproses..." : "Buka Rekening Baru"}
             {!bukaLoading && <IconArrowRight className="h-4 w-4" />}
@@ -156,7 +156,7 @@ export default function TabunganPage() {
       ) : (
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Detail rekening */}
-          <section aria-label="Detail rekening" className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/60 bg-white/75 p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-7">
+          <section aria-label="Detail rekening" className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-7">
             <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
             <div className="relative z-10">
               <div className="flex items-center justify-between">
@@ -165,11 +165,11 @@ export default function TabunganPage() {
               </div>
               <div className="mt-2 text-4xl font-bold text-primary-deep md:text-5xl">{formatRupiah(saldo)}</div>
               <dl className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-line/40 bg-white/50 p-4">
+                <div className="rounded-xl border border-edge bg-surface-2 p-4">
                   <dt className="text-xs uppercase tracking-wider text-muted">Nomor Rekening</dt>
                   <dd className="mt-1 font-semibold text-ink">{tabungan.nomorRekening}</dd>
                 </div>
-                <div className="rounded-xl border border-line/40 bg-white/50 p-4">
+                <div className="rounded-xl border border-edge bg-surface-2 p-4">
                   <dt className="text-xs uppercase tracking-wider text-muted">Dibuka</dt>
                   <dd className="mt-1 font-semibold text-ink">{formatTanggal(tabungan.dibukaAt, false)}</dd>
                 </div>
@@ -178,7 +178,7 @@ export default function TabunganPage() {
           </section>
 
           {/* Estimasi */}
-          <section aria-label="Estimasi keberangkatan" className="flex flex-col items-center justify-center rounded-2xl border border-white/60 bg-gradient-to-br from-white to-[#eef5f4] p-8 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-5">
+          <section aria-label="Estimasi keberangkatan" className="flex flex-col items-center justify-center rounded-2xl border border-edge bg-gradient-to-br from-primary/10 to-gold/10 p-8 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-5">
             <div aria-hidden className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
               <IconFlight className="h-7 w-7" />
             </div>
@@ -190,7 +190,7 @@ export default function TabunganPage() {
           </section>
 
           {/* Setor */}
-          <section aria-label="Setor saldo" className="rounded-2xl border border-white/60 bg-white/75 p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-12">
+          <section aria-label="Setor saldo" className="rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-12">
             <h2 className="mb-5 text-lg font-bold text-primary-deep">Setor Saldo</h2>
             <form onSubmit={handleSetor} className="flex flex-col gap-4 md:flex-row md:items-end" noValidate aria-busy={setorLoading}>
               <div className="flex flex-1 flex-col gap-1.5">
@@ -204,7 +204,7 @@ export default function TabunganPage() {
                   placeholder="Minimal 100.000"
                   aria-invalid={!!setorError}
                   aria-describedby="nominal-hint"
-                  className={`w-full rounded-xl border bg-white/70 py-3.5 px-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-white focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${setorError ? "border-danger/60 focus:border-danger" : "border-line/70 focus:border-primary-dark"}`}
+                  className={`w-full rounded-xl border bg-surface py-3.5 px-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60 ${setorError ? "border-danger/60 focus:border-danger" : "border-edge-strong focus:border-primary-dark"}`}
                 />
                 <p id="nominal-hint" className="ml-1 text-xs text-muted">
                   {nominal && Number.isFinite(nominalNum) ? `= ${formatRupiah(nominalNum)}` : "Minimum Rp 100.000"}
@@ -217,7 +217,7 @@ export default function TabunganPage() {
                   value={metode}
                   disabled={setorLoading}
                   onChange={(e) => setMetode(e.target.value)}
-                  className="rounded-xl border border-line/70 bg-white/70 py-3.5 px-4 text-base text-ink outline-none transition-all focus:border-primary-dark focus:bg-white focus:ring-4 focus:ring-primary/20 disabled:opacity-60"
+                  className="rounded-xl border border-edge-strong bg-surface py-3.5 px-4 text-base text-ink outline-none transition-all focus:border-primary-dark focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60"
                 >
                   {METODE.map((m) => (
                     <option key={m} value={m}>{m.replace("_", " ")}</option>
@@ -227,7 +227,7 @@ export default function TabunganPage() {
               <button
                 type="submit"
                 disabled={setorLoading}
-                className="flex items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-8 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-95 disabled:opacity-70"
+                className="flex items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-8 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-95 disabled:opacity-70"
               >
                 {setorLoading ? "Memproses..." : "Setor Sekarang"}
               </button>
