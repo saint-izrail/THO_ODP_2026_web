@@ -1,16 +1,14 @@
-// Footer global — tampil di setiap halaman lewat root layout.
-// Copyright jelas terbaca namun tetap kalem (tidak mengganggu konten).
+// Copyright global yang selalu terlihat (fixed bawah-tengah).
+// pointer-events-none -> tidak pernah menghalangi klik konten di bawahnya.
+// Diletakkan di bawah-tengah agar tidak bentrok dgn tombol tema (bawah-kanan).
 export function SiteFooter() {
   return (
-    <footer className="relative z-10 border-t border-edge bg-surface/40 px-6 py-5 text-center backdrop-blur">
-      <p className="text-xs text-muted">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-3">
+      <p className="rounded-full border border-edge bg-surface/70 px-3.5 py-1 text-[10px] tracking-wide text-muted shadow-sm backdrop-blur-md">
         &copy; 2026{" "}
-        <span className="font-semibold text-ink">Farhan Surya Kusuma</span>. All
-        Rights Reserved.
+        <span className="font-semibold text-ink">Farhan Surya Kusuma</span>
+        <span className="hidden sm:inline"> · All Rights Reserved</span>
       </p>
-      <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted/60">
-        BSI Tabungan Haji · Digital Sanctuary
-      </p>
-    </footer>
+    </div>
   );
 }
