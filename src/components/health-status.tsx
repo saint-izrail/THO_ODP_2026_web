@@ -62,12 +62,28 @@ export function HealthStatusIndicator() {
   const { color, label } = config[status];
 
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-edge bg-surface-2 px-4 py-3">
-      <span className={`inline-block h-3 w-3 shrink-0 rounded-full ${color}`} />
-      <div className="flex-1">
-        <p className="text-sm font-medium">{label}</p>
+    <div
+      role="status"
+      aria-live="polite"
+      aria-busy={status === "loading"}
+      className="flex items-center gap-3.5 rounded-2xl border border-edge bg-surface-2 px-4 py-3 shadow-sm backdrop-blur-md"
+    >
+      <span aria-hidden="true" className="relative flex h-3 w-3 shrink-0 items-center justify-center">
+        <span
+          className={`absolute inline-flex h-full w-full rounded-full opacity-60 ${color} ${
+            status === "loading" ? "animate-ping motion-reduce:hidden" : "hidden"
+          }`}
+        />
+        <span
+          className={`relative inline-flex h-3 w-3 rounded-full ${color} ${
+            status === "ok" ? "animate-glow" : ""
+          }`}
+        />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="text-sm font-semibold tracking-tight text-ink">{label}</p>
         {detail && (
-          <p className="text-xs text-muted">
+          <p className="mt-0.5 truncate text-xs tracking-wide text-muted">
             {detail.service} ·{" "}
             {new Date(detail.timestamp).toLocaleTimeString("id-ID")}
           </p>
@@ -76,7 +92,7 @@ export function HealthStatusIndicator() {
       <button
         onClick={checkHealth}
         disabled={status === "loading"}
-        className="rounded-md border border-edge px-3 py-1 text-xs font-medium hover:bg-surface-3 disabled:opacity-50"
+        className="shrink-0 rounded-full border border-edge bg-surface-3 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted transition hover-lift hover:border-edge-strong hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-50"
       >
         Cek ulang
       </button>

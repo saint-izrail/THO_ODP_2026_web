@@ -12,6 +12,7 @@ import {
 } from "@/lib/nasabah";
 import { NasabahRow } from "@/components/nasabah-row";
 import { IconPlus, IconSearch, IconUsers } from "@/components/icons";
+import { Reveal } from "@/components/reveal";
 
 const NIK_RE = /^\d{16}$/;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -229,22 +230,28 @@ export default function NasabahPage() {
 
   return (
     <>
-      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-primary-deep md:text-4xl">Data Nasabah</h1>
-          <p className="mt-2 text-base text-muted">
-            Kelola data nasabah (admin) — tambah, ubah, dan hapus.
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={openCreate}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-dark px-5 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98]"
-        >
-          <IconPlus className="h-4 w-4" />
-          Tambah Nasabah
-        </button>
-      </header>
+      <Reveal>
+        <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+              <IconUsers className="h-4 w-4" aria-hidden />
+              Manajemen Nasabah
+            </p>
+            <h1 className="gold-text text-3xl font-bold md:text-4xl">Data Nasabah</h1>
+            <p className="mt-2 text-base text-muted">
+              Kelola data nasabah (admin) — tambah, ubah, dan hapus.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={openCreate}
+            className="btn-shine ring-glow inline-flex items-center justify-center gap-2 rounded-xl bg-primary-dark px-5 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98]"
+          >
+            <IconPlus className="h-4 w-4" />
+            Tambah Nasabah
+          </button>
+        </header>
+      </Reveal>
 
       {notice && (
         <p role="status" className="mb-6 rounded-xl border border-success/20 bg-success/5 px-4 py-3 text-sm text-success">
@@ -254,19 +261,26 @@ export default function NasabahPage() {
 
       {/* Form tambah/edit */}
       {panelOpen && (
+        <Reveal>
         <section
           aria-label={editingId === null ? "Tambah nasabah" : "Edit nasabah"}
-          className="mb-6 rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl"
+          className="hover-lift mb-6 rounded-2xl border border-edge-strong bg-surface-2 p-8 shadow-ambient backdrop-blur-xl"
         >
-          <h2 className="mb-5 text-lg font-bold text-primary-deep">
-            {editingId === null ? "Tambah Nasabah Baru" : "Edit Data Nasabah"}
-          </h2>
+          <div className="mb-5 flex items-center gap-3">
+            <span aria-hidden className="flex h-10 w-10 items-center justify-center rounded-xl border border-edge bg-primary/10 text-primary">
+              {editingId === null ? <IconPlus className="h-5 w-5" /> : <IconUsers className="h-5 w-5" />}
+            </span>
+            <h2 className="text-lg font-bold text-primary-deep">
+              {editingId === null ? "Tambah Nasabah Baru" : "Edit Data Nasabah"}
+            </h2>
+          </div>
+          <div className="divider-gold mb-6" />
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2" noValidate aria-busy={submitting}>
             {fields.map((f) => {
               const err = errs[f.id];
               return (
                 <div key={f.id} className="flex flex-col gap-1.5">
-                  <label htmlFor={f.id} className="ml-1 text-sm font-semibold text-ink">{f.label}</label>
+                  <label htmlFor={f.id} className="ml-1 text-xs font-semibold uppercase tracking-wider text-muted">{f.label}</label>
                   <input
                     id={f.id}
                     type={f.type}
@@ -305,15 +319,16 @@ export default function NasabahPage() {
             )}
 
             <div className="flex gap-3 sm:col-span-2">
-              <button type="submit" disabled={submitting} className="flex-1 rounded-xl bg-primary-dark py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70">
+              <button type="submit" disabled={submitting} className="btn-shine flex-1 rounded-xl bg-primary-dark py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70">
                 {submitting ? "Menyimpan..." : editingId === null ? "Tambah Nasabah" : "Simpan Perubahan"}
               </button>
-              <button type="button" disabled={submitting} onClick={closePanel} className="rounded-xl border border-edge-strong px-6 py-3 text-sm font-semibold text-muted transition-colors hover:bg-surface-2 disabled:opacity-60">
+              <button type="button" disabled={submitting} onClick={closePanel} className="rounded-xl border border-edge-strong px-6 py-3 text-sm font-semibold text-muted transition-colors hover:bg-surface-3 disabled:opacity-60">
                 Batal
               </button>
             </div>
           </form>
         </section>
+        </Reveal>
       )}
 
       {/* Pencarian */}
@@ -337,7 +352,8 @@ export default function NasabahPage() {
       </form>
 
       {/* Tabel */}
-      <section className="overflow-hidden rounded-2xl border border-edge bg-surface shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+      <Reveal delay={120}>
+      <section className="overflow-hidden rounded-2xl border border-edge bg-surface shadow-ambient backdrop-blur-xl">
         {loading ? (
           <div role="status" aria-busy="true" className="h-72 animate-pulse bg-surface motion-reduce:animate-none">
             <span className="sr-only">Memuat data nasabah…</span>
@@ -350,28 +366,41 @@ export default function NasabahPage() {
             </button>
           </div>
         ) : list.length === 0 ? (
-          <div className="flex flex-col items-center gap-3 p-14 text-center">
-            <span aria-hidden className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <IconUsers className="h-7 w-7" />
+          <div className="flex flex-col items-center gap-4 px-6 py-16 text-center">
+            <span
+              aria-hidden
+              className="animate-float relative flex h-20 w-20 items-center justify-center rounded-2xl border border-edge bg-gradient-to-br from-primary/10 to-gold/10 text-primary shadow-ambient motion-reduce:animate-none"
+            >
+              <IconUsers className="h-9 w-9" />
             </span>
-            <p className="font-semibold text-primary-deep">
+            <p className="text-lg font-bold text-primary-deep">
               {search ? "Tidak ada nasabah yang cocok" : "Belum ada data nasabah"}
             </p>
-            <p className="text-sm text-muted">
-              {search ? "Coba kata kunci lain." : "Tambah nasabah pertama lewat tombol di atas."}
+            <p className="max-w-xs text-sm text-muted">
+              {search ? "Coba kata kunci lain atau periksa ejaan pencarian." : "Mulai dengan menambahkan nasabah pertama lewat tombol di atas."}
             </p>
+            {!search && (
+              <button
+                type="button"
+                onClick={openCreate}
+                className="btn-shine mt-1 inline-flex items-center gap-2 rounded-xl bg-primary-dark px-5 py-2.5 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-[0.98]"
+              >
+                <IconPlus className="h-4 w-4" />
+                Tambah Nasabah
+              </button>
+            )}
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[640px] border-collapse text-left">
               <thead>
-                <tr className="border-b border-edge bg-primary/[0.03]">
-                  <th scope="col" className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted">#</th>
-                  <th scope="col" className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted">Nama / NIK</th>
-                  <th scope="col" className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted">Email</th>
-                  <th scope="col" className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted">Nomor HP</th>
-                  <th scope="col" className="hidden px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted lg:table-cell">Terdaftar</th>
-                  <th scope="col" className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-muted">Aksi</th>
+                <tr className="border-b border-edge-strong bg-gradient-to-r from-primary/[0.06] to-gold/[0.04]">
+                  <th scope="col" className="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-primary-deep">#</th>
+                  <th scope="col" className="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-primary-deep">Nama / NIK</th>
+                  <th scope="col" className="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-primary-deep">Email</th>
+                  <th scope="col" className="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-primary-deep">Nomor HP</th>
+                  <th scope="col" className="hidden px-4 py-4 text-xs font-semibold uppercase tracking-wider text-primary-deep lg:table-cell">Terdaftar</th>
+                  <th scope="col" className="px-4 py-4 text-right text-xs font-semibold uppercase tracking-wider text-primary-deep">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -390,6 +419,7 @@ export default function NasabahPage() {
           </div>
         )}
       </section>
+      </Reveal>
 
       {/* Pagination */}
       {!loading && !loadError && total > 0 && (

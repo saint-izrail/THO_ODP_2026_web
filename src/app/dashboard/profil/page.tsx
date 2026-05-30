@@ -169,7 +169,7 @@ export default function ProfilPage() {
       )}
 
       {/* Kartu profil */}
-      <section className="relative overflow-hidden rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl md:p-10">
+      <section className="relative overflow-hidden rounded-2xl border border-edge bg-surface p-8 shadow-ambient backdrop-blur-xl md:p-10">
         <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
         <div className="relative z-10 flex flex-col items-center gap-8 md:flex-row md:items-start">
           {/* Avatar */}
@@ -214,7 +214,7 @@ export default function ProfilPage() {
 
       {/* Form edit */}
       {editing && (
-        <section aria-label="Edit profil" className="mt-6 rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+        <section aria-label="Edit profil" className="mt-6 rounded-2xl border border-edge bg-surface p-8 shadow-ambient backdrop-blur-xl">
           <h2 className="mb-5 text-lg font-bold text-primary-deep">Edit Data Diri</h2>
           <form onSubmit={handleSave} className="flex flex-col gap-4" noValidate aria-busy={saving}>
             {([
@@ -264,7 +264,7 @@ export default function ProfilPage() {
 
       {/* Info rekening ringkas */}
       {tabungan && (
-        <section aria-label="Ringkasan rekening" className="mt-6 flex items-center gap-4 rounded-2xl border border-edge bg-surface p-6 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
+        <section aria-label="Ringkasan rekening" className="mt-6 flex items-center gap-4 rounded-2xl border border-edge bg-surface p-6 shadow-ambient backdrop-blur-xl">
           <div aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
             <IconBank className="h-6 w-6" />
           </div>

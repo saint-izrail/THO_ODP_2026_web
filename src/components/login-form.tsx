@@ -120,7 +120,7 @@ export function LoginForm() {
             inputMode="email"
             aria-invalid={!!error}
             aria-describedby={describedBy}
-            className="w-full rounded-xl border border-edge-strong bg-surface py-3.5 pl-12 pr-4 text-base text-ink outline-none transition-all placeholder:text-muted focus:border-primary-dark focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60"
+            className="w-full rounded-xl border border-edge-strong bg-surface-2 py-3.5 pl-12 pr-4 text-base text-ink outline-none transition-all placeholder:text-muted hover:border-primary/40 focus:border-primary-dark focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60"
           />
         </div>
       </div>
@@ -158,7 +158,7 @@ export function LoginForm() {
             autoComplete="current-password"
             aria-invalid={!!error}
             aria-describedby={describedBy}
-            className="w-full rounded-xl border border-edge-strong bg-surface py-3.5 pl-12 pr-12 text-base text-ink outline-none transition-all placeholder:text-muted focus:border-primary-dark focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60"
+            className="w-full rounded-xl border border-edge-strong bg-surface-2 py-3.5 pl-12 pr-12 text-base text-ink outline-none transition-all placeholder:text-muted hover:border-primary/40 focus:border-primary-dark focus:bg-surface-3 focus:ring-4 focus:ring-primary/20 disabled:opacity-60"
           />
           <button
             type="button"
@@ -200,7 +200,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={loading}
-        className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-6 text-base font-semibold text-on-accent shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep hover:shadow-primary/35 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+        className="btn-shine mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-6 text-base font-semibold text-on-accent shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep hover:shadow-primary/35 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {loading ? (
           <>

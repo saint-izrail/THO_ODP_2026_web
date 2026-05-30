@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { getUser, clearSession } from "@/lib/auth";
 import type { ApiUser } from "@/lib/api";
+import { BrandMark } from "@/components/brand-mark";
 import {
   IconDashboard,
   IconWallet,
@@ -16,7 +17,6 @@ import {
   IconSearch,
   IconBell,
   IconSettings,
-  IconMosque,
   IconUsers,
 } from "@/components/icons";
 
@@ -85,16 +85,9 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       {/* Sidebar desktop */}
       <nav aria-label="Navigasi utama" className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col gap-8 border-r border-edge bg-surface p-6 shadow-xl shadow-primary/5 backdrop-blur-2xl md:flex">
         <div>
-          <div className="flex items-center gap-3">
-            <div aria-hidden className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <IconMosque className="h-6 w-6" />
-            </div>
-            <div>
-              <p className="text-lg font-extrabold leading-tight text-primary-deep">Haji Portal</p>
-              <p className="text-xs text-muted">Digital Sanctuary</p>
-            </div>
-          </div>
-          <Link href="/dashboard/tabungan" className="mt-5 flex w-full items-center justify-center rounded-lg bg-primary-dark py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-primary-deep">
+          <BrandMark size="md" />
+          <div className="divider-gold mt-5" />
+          <Link href="/dashboard/tabungan" className="btn-shine ring-glow hover-lift mt-5 flex w-full items-center justify-center rounded-xl bg-primary-dark py-2.5 text-sm font-semibold text-on-accent shadow-md shadow-primary/20 transition-all hover:bg-primary-deep">
             Buka Rekening Baru
           </Link>
         </div>
@@ -110,12 +103,24 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                 aria-current={active ? "page" : undefined}
                 className={
                   active
-                    ? "flex items-center gap-3 rounded-xl bg-primary-dark px-4 py-3 text-sm font-semibold text-on-accent shadow-md shadow-primary/20"
-                    : "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-muted transition-all hover:bg-primary/5 hover:text-primary-deep"
+                    ? "group relative flex items-center gap-3 rounded-xl bg-primary-dark px-4 py-3 text-sm font-semibold text-on-accent shadow-md shadow-primary/20 transition-all duration-300"
+                    : "group relative flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-muted transition-all duration-300 hover:translate-x-0.5 hover:bg-primary/5 hover:text-primary-deep"
                 }
               >
-                <Icon className="h-5 w-5" />
-                {item.label}
+                {active && (
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-full bg-gold/80 shadow-[0_0_8px] shadow-gold/40"
+                  />
+                )}
+                <Icon className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                <span>{item.label}</span>
+                {active && (
+                  <span
+                    aria-hidden
+                    className="ml-auto h-1.5 w-1.5 rounded-full bg-gold animate-glow"
+                  />
+                )}
               </Link>
             );
           })}

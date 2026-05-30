@@ -28,13 +28,19 @@ export function ApiStatusPill() {
     <div
       role="status"
       aria-live="polite"
-      className="flex items-center gap-2 rounded-full border border-edge bg-surface-2 px-4 py-1.5 backdrop-blur-sm"
+      className="inline-flex items-center gap-2.5 rounded-full border border-edge bg-surface-2 px-4 py-1.5 shadow-sm backdrop-blur-md"
     >
-      <span aria-hidden="true" className="relative flex h-2 w-2">
-        <span className={`absolute inline-flex h-full w-full animate-ping rounded-full motion-reduce:animate-none ${cfg.dot} opacity-60`} />
-        <span className={`relative inline-flex h-2 w-2 rounded-full ${cfg.dot}`} />
+      <span aria-hidden="true" className="relative flex h-2 w-2 items-center justify-center">
+        <span
+          className={`absolute inline-flex h-full w-full rounded-full opacity-60 motion-reduce:hidden ${cfg.dot} ${state === "checking" ? "animate-ping" : "hidden"}`}
+        />
+        <span
+          className={`relative inline-flex h-2 w-2 rounded-full ${cfg.dot} ${
+            state === "online" ? "animate-glow" : ""
+          }`}
+        />
       </span>
-      <span className="text-xs font-medium uppercase tracking-wider text-muted">
+      <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
         {cfg.label}
       </span>
     </div>

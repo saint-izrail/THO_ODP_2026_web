@@ -1,47 +1,38 @@
 import Link from "next/link";
 import { RegisterForm } from "@/components/register-form";
 import { ApiStatusPill } from "@/components/api-status-pill";
-
-function MosqueLogo() {
-  return (
-    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8">
-      <path d="M3 21h18" />
-      <path d="M5 21v-8" />
-      <path d="M19 21v-8" />
-      <path d="M5 13a7 7 0 0 1 14 0" />
-      <path d="M12 6V4" />
-      <path d="M10.5 21v-3.5a1.5 1.5 0 0 1 3 0V21" />
-    </svg>
-  );
-}
+import { BackgroundFX } from "@/components/background-fx";
+import { BrandMark } from "@/components/brand-mark";
+import { Reveal } from "@/components/reveal";
 
 export default function RegisterPage() {
   return (
-    <main className="relative flex min-h-screen flex-1 items-center justify-center overflow-hidden bg-gradient-to-br from-primary/5 via-background to-gold/5 p-4 md:p-8">
-      <div aria-hidden className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-primary/10 blur-[100px]" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-24 h-96 w-96 rounded-full bg-gold/10 blur-[120px]" />
+    <main className="relative flex min-h-screen flex-1 items-center justify-center overflow-hidden p-4 md:p-8">
+      {/* Ambiance latar penuh */}
+      <BackgroundFX variant="auth" />
 
       <div className="relative z-10 flex w-full max-w-[460px] flex-col items-center py-8">
-        <div className="w-full rounded-[2rem] border border-edge bg-surface p-8 shadow-[0_12px_48px_-12px_rgba(0,79,76,0.18)] backdrop-blur-2xl md:p-11">
-          <div className="mb-8 flex flex-col items-center text-center">
-            <div aria-hidden className="flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/15 bg-primary/10 text-primary">
-              <MosqueLogo />
+        <Reveal className="w-full">
+          <div className="ring-glow w-full rounded-[2rem] border border-edge bg-surface/90 p-8 shadow-ambient-xl backdrop-blur-2xl md:p-11">
+            <div className="mb-8 flex flex-col items-center text-center">
+              <BrandMark size="lg" withText={false} />
+              <h1 className="gold-text mt-5 text-2xl font-bold tracking-tight">Buat Akun Baru</h1>
+              <p className="mt-2 max-w-xs text-sm text-muted">
+                Mulai perjalanan menabung untuk ibadah haji Anda
+              </p>
+              <div className="divider-gold mt-6 w-full" />
             </div>
-            <h1 className="mt-5 text-2xl font-bold tracking-tight text-primary-deep">Buat Akun Baru</h1>
-            <p className="mt-2 max-w-xs text-sm text-muted">
-              Mulai perjalanan menabung untuk ibadah haji Anda
+
+            <RegisterForm />
+
+            <p className="mt-6 text-center text-sm text-muted">
+              Sudah memiliki akun?{" "}
+              <Link href="/login" className="font-semibold text-primary-deep transition-colors hover:text-primary-dark">
+                Masuk
+              </Link>
             </p>
           </div>
-
-          <RegisterForm />
-
-          <p className="mt-6 text-center text-sm text-muted">
-            Sudah memiliki akun?{" "}
-            <Link href="/login" className="font-semibold text-primary-deep transition-colors hover:text-primary-dark">
-              Masuk
-            </Link>
-          </p>
-        </div>
+        </Reveal>
 
         <div className="mt-7">
           <ApiStatusPill />

@@ -101,3 +101,27 @@ export const IconSun = (p: IconProps) => (
 export const IconMoon = (p: IconProps) => (
   <svg {...base(p)}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" /></svg>
 );
+export const IconShield = (p: IconProps) => (
+  <svg {...base(p)}><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5Z" /></svg>
+);
+export const IconClock = (p: IconProps) => (
+  <svg {...base(p)}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+);
+export const IconStar = (p: IconProps) => (
+  <svg {...base(p)}><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.8 6.8 19.2l1-5.8L3.5 9.2l5.9-.9Z" /></svg>
+);
+export const IconSparkle = (p: IconProps) => (
+  <svg {...base(p)}><path d="M12 3v4M12 17v4M3 12h4M17 12h4" /><path d="M12 7c.6 2.8 2.2 4.4 5 5-2.8.6-4.4 2.2-5 5-.6-2.8-2.2-4.4-5-5 2.8-.6 4.4-2.2 5-5Z" /></svg>
+);
+export const IconGlobe = (p: IconProps) => (
+  <svg {...base(p)}><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" /></svg>
+);
+export const IconQuote = (p: IconProps) => (
+  <svg {...base(p)}><path d="M7 7H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a2 2 0 0 1-2 2" /><path d="M17 7h-3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a2 2 0 0 1-2 2" /></svg>
+);
+export const IconChevronDown = (p: IconProps) => (
+  <svg {...base(p)}><path d="m6 9 6 6 6-6" /></svg>
+);
+export const IconCoins = (p: IconProps) => (
+  <svg {...base(p)}><ellipse cx="9" cy="6" rx="6" ry="3" /><path d="M3 6v6c0 1.7 2.7 3 6 3s6-1.3 6-3V6" /><path d="M3 12v6c0 1.7 2.7 3 6 3 1.4 0 2.7-.2 3.7-.6" /><ellipse cx="17" cy="15" rx="4" ry="2" /><path d="M13 15v3c0 1.1 1.8 2 4 2s4-.9 4-2v-3" /></svg>
+);

@@ -13,6 +13,8 @@ import {
 } from "@/lib/api";
 import { formatRupiah, toHijri, formatTanggal } from "@/lib/format";
 import { IconWallet, IconArrowRight, IconFlight, IconCheck } from "@/components/icons";
+import { Reveal } from "@/components/reveal";
+import { AnimatedCounter } from "@/components/animated-counter";
 
 const METODE = ["TRANSFER", "QRIS", "TUNAI", "VIRTUAL_ACCOUNT"];
 const MIN_SETOR = 100_000;
@@ -114,10 +116,14 @@ export default function TabunganPage() {
 
   return (
     <>
-      <header className="mb-10">
-        <h1 className="text-3xl font-bold text-primary-deep md:text-4xl">Tabungan Haji</h1>
-        <p className="mt-2 text-base text-muted">Kelola rekening dan setoran tabungan haji Anda.</p>
-      </header>
+      <Reveal>
+        <header className="mb-10">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">Tabungan Haji</p>
+          <h1 className="gold-text text-3xl font-bold md:text-4xl">Menabung Menuju Baitullah</h1>
+          <p className="mt-3 max-w-xl text-base text-muted">Kelola rekening dan setoran tabungan haji Anda dengan tenang.</p>
+          <div className="divider-gold mt-6 h-px w-28" />
+        </header>
+      </Reveal>
 
       {loading ? (
         <div role="status" aria-busy="true" className="h-72 animate-pulse rounded-2xl bg-surface motion-reduce:animate-none">
@@ -130,68 +136,84 @@ export default function TabunganPage() {
         </div>
       ) : !tabungan ? (
         /* Belum punya rekening → buka */
-        <div className="rounded-2xl border border-edge bg-surface p-10 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl">
-          <div aria-hidden className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <IconWallet className="h-8 w-8" />
+        <Reveal>
+          <div className="relative overflow-hidden rounded-2xl border border-edge bg-surface p-10 text-center shadow-ambient backdrop-blur-xl">
+            <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gold/10 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+            <div className="relative z-10">
+              <div aria-hidden className="mx-auto flex h-16 w-16 animate-float items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-edge">
+                <IconWallet className="h-8 w-8" />
+              </div>
+              <h2 className="mt-5 text-xl font-bold text-primary-deep">Belum ada rekening tabungan haji</h2>
+              <p className="mx-auto mt-2 max-w-md text-sm text-muted">
+                Buka rekening sekarang untuk mulai menabung menuju Baitullah.
+              </p>
+              {bukaError && (
+                <p role="alert" className="mx-auto mt-4 max-w-md rounded-lg border border-danger/20 bg-danger/5 px-4 py-2 text-sm text-danger">
+                  {bukaError}
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={handleBuka}
+                disabled={bukaLoading}
+                className="btn-shine ring-glow mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70"
+              >
+                {bukaLoading ? "Memproses..." : "Buka Rekening Baru"}
+                {!bukaLoading && <IconArrowRight className="h-4 w-4" />}
+              </button>
+            </div>
           </div>
-          <h2 className="mt-5 text-xl font-bold text-primary-deep">Belum ada rekening tabungan haji</h2>
-          <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-            Buka rekening sekarang untuk mulai menabung menuju Baitullah.
-          </p>
-          {bukaError && (
-            <p role="alert" className="mx-auto mt-4 max-w-md rounded-lg border border-danger/20 bg-danger/5 px-4 py-2 text-sm text-danger">
-              {bukaError}
-            </p>
-          )}
-          <button
-            type="button"
-            onClick={handleBuka}
-            disabled={bukaLoading}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep active:scale-[0.98] disabled:opacity-70"
-          >
-            {bukaLoading ? "Memproses..." : "Buka Rekening Baru"}
-            {!bukaLoading && <IconArrowRight className="h-4 w-4" />}
-          </button>
-        </div>
+        </Reveal>
       ) : (
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Detail rekening */}
-          <section aria-label="Detail rekening" className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-7">
-            <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
-            <div className="relative z-10">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-muted">Total Saldo</h3>
-                <span className="rounded-full bg-success/10 px-3 py-1 text-xs font-semibold text-success">{tabungan.status}</span>
+          <Reveal className="lg:col-span-7" delay={80}>
+            <section aria-label="Detail rekening" className="hover-lift relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-edge bg-surface p-8 shadow-ambient backdrop-blur-xl">
+              <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+              <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-muted">Total Saldo</h3>
+                  <span className="rounded-full bg-success/10 px-3 py-1 text-xs font-semibold text-success ring-1 ring-success/20">{tabungan.status}</span>
+                </div>
+                <div className="mt-2 text-4xl font-bold md:text-5xl">
+                  <AnimatedCounter value={saldo} format={(x) => formatRupiah(x)} className="gold-text" />
+                </div>
+                <dl className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-edge bg-surface-2 p-4">
+                    <dt className="text-xs uppercase tracking-wider text-muted">Nomor Rekening</dt>
+                    <dd className="mt-1 font-semibold text-ink">{tabungan.nomorRekening}</dd>
+                  </div>
+                  <div className="rounded-xl border border-edge bg-surface-2 p-4">
+                    <dt className="text-xs uppercase tracking-wider text-muted">Dibuka</dt>
+                    <dd className="mt-1 font-semibold text-ink">{formatTanggal(tabungan.dibukaAt, false)}</dd>
+                  </div>
+                </dl>
               </div>
-              <div className="mt-2 text-4xl font-bold text-primary-deep md:text-5xl">{formatRupiah(saldo)}</div>
-              <dl className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-edge bg-surface-2 p-4">
-                  <dt className="text-xs uppercase tracking-wider text-muted">Nomor Rekening</dt>
-                  <dd className="mt-1 font-semibold text-ink">{tabungan.nomorRekening}</dd>
-                </div>
-                <div className="rounded-xl border border-edge bg-surface-2 p-4">
-                  <dt className="text-xs uppercase tracking-wider text-muted">Dibuka</dt>
-                  <dd className="mt-1 font-semibold text-ink">{formatTanggal(tabungan.dibukaAt, false)}</dd>
-                </div>
-              </dl>
-            </div>
-          </section>
+            </section>
+          </Reveal>
 
           {/* Estimasi */}
-          <section aria-label="Estimasi keberangkatan" className="flex flex-col items-center justify-center rounded-2xl border border-edge bg-gradient-to-br from-primary/10 to-gold/10 p-8 text-center shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-5">
-            <div aria-hidden className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <IconFlight className="h-7 w-7" />
-            </div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted">Estimasi Keberangkatan</h3>
-            <div className="mt-2 text-2xl font-bold text-secondary">
-              {tahunM ? `${tahunM} M / ${toHijri(tahunM)} H` : "Belum tersedia"}
-            </div>
-            <p className="mt-3 px-2 text-xs text-muted">{estimasi?.catatan ?? "Mulai menabung untuk melihat estimasi."}</p>
-          </section>
+          <Reveal className="lg:col-span-5" delay={160}>
+            <section aria-label="Estimasi keberangkatan" className="hover-lift relative flex h-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-edge bg-gradient-to-br from-primary/10 to-gold/10 p-8 text-center shadow-ambient backdrop-blur-xl">
+              <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold/10 blur-3xl" />
+              <div aria-hidden className="relative mb-4 flex h-14 w-14 animate-float-slow items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-edge">
+                <IconFlight className="h-7 w-7" />
+              </div>
+              <h3 className="relative text-xs font-semibold uppercase tracking-wider text-muted">Estimasi Keberangkatan</h3>
+              <div className="relative mt-2 text-2xl font-bold">
+                {tahunM ? <span className="gold-text">{`${tahunM} M / ${toHijri(tahunM)} H`}</span> : <span className="text-secondary">Belum tersedia</span>}
+              </div>
+              <p className="relative mt-3 px-2 text-xs text-muted">{estimasi?.catatan ?? "Mulai menabung untuk melihat estimasi."}</p>
+            </section>
+          </Reveal>
 
           {/* Setor */}
-          <section aria-label="Setor saldo" className="rounded-2xl border border-edge bg-surface p-8 shadow-[0_8px_32px_0_rgba(0,79,76,0.06)] backdrop-blur-xl lg:col-span-12">
-            <h2 className="mb-5 text-lg font-bold text-primary-deep">Setor Saldo</h2>
+          <Reveal className="lg:col-span-12" delay={120}>
+          <section aria-label="Setor saldo" className="rounded-2xl border border-edge bg-surface p-8 shadow-ambient backdrop-blur-xl">
+            <h2 className="mb-1 gold-text text-lg font-bold">Setor Saldo</h2>
+            <p className="mb-5 text-sm text-muted">Tambah saldo tabungan haji untuk mempercepat keberangkatan.</p>
             <form onSubmit={handleSetor} className="flex flex-col gap-4 md:flex-row md:items-end" noValidate aria-busy={setorLoading}>
               <div className="flex flex-1 flex-col gap-1.5">
                 <label htmlFor="nominal" className="ml-1 text-sm font-semibold text-ink">Nominal</label>
@@ -227,9 +249,10 @@ export default function TabunganPage() {
               <button
                 type="submit"
                 disabled={setorLoading}
-                className="flex items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-8 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-95 disabled:opacity-70"
+                className="btn-shine ring-glow flex items-center justify-center gap-2 rounded-xl bg-primary-dark py-3.5 px-8 text-sm font-semibold text-on-accent shadow-lg shadow-primary/20 transition-all hover:bg-primary-deep active:scale-95 disabled:opacity-70"
               >
                 {setorLoading ? "Memproses..." : "Setor Sekarang"}
+                {!setorLoading && <IconArrowRight className="h-4 w-4" />}
               </button>
             </form>
             {setorError && (
@@ -242,6 +265,7 @@ export default function TabunganPage() {
               </p>
             )}
           </section>
+          </Reveal>
         </div>
       )}
     </>
