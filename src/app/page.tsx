@@ -172,18 +172,6 @@ export default function Home() {
           </div>
         </Reveal>
       </section>
-
-      {/* FOOTER */}
-      <footer className="relative z-10 border-t border-edge bg-surface/40 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-1 px-6 py-6 text-center">
-          <p className="text-xs text-muted">
-            &copy; {new Date().getFullYear()} BSI Tabungan Haji. Melangkah dalam ridha-Nya.
-          </p>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted/70">
-            Digital Sanctuary
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }
