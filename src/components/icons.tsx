@@ -89,3 +89,9 @@ export const IconVerified = (p: IconProps) => (
 export const IconBank = (p: IconProps) => (
   <svg {...base(p)}><path d="M3 21h18" /><path d="M5 21V10M19 21V10M9 21V10M15 21V10" /><path d="M12 3 21 8H3Z" /></svg>
 );
+export const IconTrash = (p: IconProps) => (
+  <svg {...base(p)}><path d="M3 6h18" /><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M10 11v6M14 11v6" /></svg>
+);
+export const IconUsers = (p: IconProps) => (
+  <svg {...base(p)}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+);

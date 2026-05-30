@@ -17,6 +17,7 @@ import {
   IconBell,
   IconSettings,
   IconMosque,
+  IconUsers,
 } from "@/components/icons";
 
 const NAV = [
@@ -24,6 +25,7 @@ const NAV = [
   { label: "Tabungan", icon: IconWallet, href: "/dashboard/tabungan" },
   { label: "Mutasi", icon: IconReceipt, href: "/dashboard/mutasi" },
   { label: "Laporan", icon: IconChart, href: "/dashboard/laporan" },
+  { label: "Data Nasabah", icon: IconUsers, href: "/dashboard/nasabah" },
   { label: "Profil", icon: IconPerson, href: "/dashboard/profil" },
 ];
 
